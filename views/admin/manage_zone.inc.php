@@ -58,12 +58,14 @@ try {
                                         </thead>
                                         <tbody>
                                         <?php 
-                                      
+										$i = 0;
                                         foreach ($zoneList as $key => $value) {
-
+											$i++;
                                             ?>
                                             <tr>
-                                                <td><?php echo $value->getID_Zone(); ?></td>
+                                                <!--<td><?php echo $value->getID_Zone(); ?></td-->
+												 <td><?php echo $i; ?></td>
+
                                                 <td><?php echo $value->Name_Employee.' '.$value->Surname_Employee; ?></td>
                                                 <!--<td><?php echo ''; ?></td>-->
                                                 <td>

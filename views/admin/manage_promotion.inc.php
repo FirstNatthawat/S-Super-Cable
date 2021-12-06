@@ -51,7 +51,7 @@ try {
                                             <th>เลขที่</th>
                                             <th>ชื่อสินค้าส่งเสริมการขาย</th>
                                             <th>จำนวน</th>
-                                            <th>ราคาต่อชิ้น (บาท)</th>
+                                            <th>ราคาต่อชิ้น</th>
                                             <th>การกระทำ</th>
                                         </tr>
                                         </thead>
@@ -74,7 +74,6 @@ try {
                                                             <i class="fa fa-wrench"></i> เเก้ไข
                                                         </button>
                                                     </a>
-                                                      <?php if(Promotion::chkData($value->getID_Promotion())){ ?>
                                                     <a href="#"
                                                        onclick="onaction_deletepromotion('<?php echo $value->getID_Promotion(); ?>')">
                                                         <button type="button" class="btn btn-round btn-danger"
@@ -82,7 +81,6 @@ try {
                                                             <i class="fa fa-trash"></i> ลบ
                                                         </button>
                                                     </a>
-                                                      <?php } ?>
                                                 </td>
                                             </tr>
                                         <?php } ?>

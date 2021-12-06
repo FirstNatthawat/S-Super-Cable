@@ -105,12 +105,11 @@ function  awardManageShow(type, ID_Award ) {
           title = "ดูรางวัล ";
           //clear error if exists
           form_validte.resetForm();
-          get_award_to_view(ID_Award);
-          $('#button_awardManageModal').attr("data-id", ID_Award);
-          $('#form_awardManage input').attr('disabled', true);
-          $('#form_awardManage input').attr('readonly',true);
+          get_award_to_edit(ID_Award);
+          $('#form_awardManage input').attr('readonly', 'readonly');
+          $('#form_awardManage input').attr('disabled',true);
           $('#form_awardManage select').attr("disabled", true);
-          break;
+          $('#button_awardManageModal').hide();
         default:
           // ..
         break;
@@ -123,7 +122,6 @@ function  awardManageShow(type, ID_Award ) {
       $('#button_awardManageModal').attr("data-status", type);
 
       /* modal show  */
-
       $('#awardManageModal').modal('show');
 
 
@@ -140,9 +138,13 @@ function onaction_createorupdate(ID_Award = null) {
       data.append(input.name, input.value);
   });
 
+  var file_data = $('input[name="award_pic"]')[0].files;
+  var file_data2 = $('input[name="award_pic2"]')[0].files;
+  var file_data3 = $('input[name="award_pic3"]')[0].files;
+
   if (type == "create" )
   {
-
+    
     var ImgFile = myDropzone.getFilesWithStatus(Dropzone.ADDED);
     ImgFile.forEach((o)=>{
        data.append("award_pic[]", o);
@@ -150,7 +152,7 @@ function onaction_createorupdate(ID_Award = null) {
   }
   else
   {
-
+   
     var ImgFile = myDropzone.getFilesWithStatus(Dropzone.ADDED);
     ImgFile.forEach((o)=>{
        data.append("award_pic[]", o);
@@ -249,32 +251,6 @@ function get_award_to_edit(ID_Award) {
   });
 
 }
-var fArr = [];
-function get_award_to_view(ID_Award) {
-
-  $.ajax({
-    url: "index.php?controller=Award&action=findAwardbyID_Award",
-    data: {
-      "ID_Award": ID_Award
-    },
-    type: "POST",
-    dataType: 'json',
-    async: false,
-    success: function (response, status) {
-      // set value to html tag
-      $('#Tittle_Award').val(response.data.Tittle_Award);
-      $('#ID_Employee_Award').val(response.data.ID_Employee).trigger('change');
-      //alert(JSON.stringify(response.data.img));
-      response.data.img.forEach((o)=>{
-        fArr.push(o);
-      });
-    },
-    error: function (xhr, status, exception) {
-      console.log(xhr);
-    }
-  });
-}
-
 
 
 function update_award(formData)

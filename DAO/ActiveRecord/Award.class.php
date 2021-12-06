@@ -204,7 +204,7 @@ class Award
     public static function findAward_byID(int $ID_Award): ?Award
     {
         $con = Db::getInstance();
-        $query = "SELECT * ,employee.Name_Employee as fullname_employee  FROM " . self::TABLE ." left join employee on award.ID_Employee = employee.ID_Employee ". " WHERE ID_Award = '$ID_Award' ";
+        $query = "SELECT * ,employee.Name_Employee as fullname_employee  FROM " . self::TABLE ." inner join employee on award.ID_Employee = employee.ID_Employee ". " WHERE ID_Award = '$ID_Award' ";
         $stmt = $con->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "Award");
         $stmt->execute();

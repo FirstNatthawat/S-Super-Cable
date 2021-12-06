@@ -194,24 +194,5 @@ class Promotion
         }
         return $promotionList;
     }
-    public static function chkData(string $ID_Promotion)
-    {
-        $con = Db::getInstance();
-        $query = "SELECT * FROM BorrowOrReturn WHERE ID_Promotion = '$ID_Promotion'";
-        $stmt = $con->prepare($query);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, "BorrowOrReturn");
-        $stmt->execute();
-        $promotionList = [];
-        while ($prod = $stmt->fetch()) {
-            $promotionList[] = $prod;
-        }
-        if(count($promotionList)=='0'){
-            return true;
-        }else{
-            return false;
-        }
-
-        //return true;
-    }
 }
 ?>

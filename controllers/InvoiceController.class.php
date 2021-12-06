@@ -61,7 +61,6 @@ class InvoiceController
     }
     private function create_invoice($params)
     {
-        session_start();
         # สร้างใบเสนอราคา
         $employee = $_SESSION["employee"];
         $emp_id = $employee->getID_Employee();
@@ -303,7 +302,7 @@ class InvoiceController
         $goodsList = Goods::findAll();
         if ($employee->getUser_Status_Employee() == "Admin") {
             include Router::getSourcePath() . "views/admin/manage_invoice.inc.php";
-        } else if ($employee->getUser_Status_Employee() == "Sales") {   
+        } else if ($employee->getUser_Status_Employee() == "Sales") {
             include Router::getSourcePath() . "views/admin/manage_invoice.inc.php";
         }
     }

@@ -27,7 +27,7 @@ try {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-md-12">
-                        <h1 class="m-0">รายงานส่งเสริมการขาย</h1>
+                        <h1 class="m-0">รายงาน</h1>
 
                         <!-- content -->
                         <div class="card">
@@ -53,7 +53,7 @@ try {
                                 </div>
                                 <canvas id="myChart" width="100%"></canvas>
                                 <div style="text-align:center; margin-top:20px;">
-                                    <a target="_blank" href="index.php?controller=report&action=borrow_print&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลดรายงาน</a> <br>
+                                    <a target="_blank" href="index.php?controller=report&action=borrow_print&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลดรายงาน</a>
                                      <a target="_blank" href="index.php?controller=report&action=borrow_excel&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลด Excel</a>
                                 </div>
                             </div>

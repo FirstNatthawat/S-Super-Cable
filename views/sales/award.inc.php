@@ -35,6 +35,10 @@ try {
                                 <!-- content -->
 
                                 <?php
+                                $img = $award->getPicture_Award();
+                                $img2 = $award->getPicture_Award2();
+                                $img3 = $award->getPicture_Award3();
+
                                 $date = date_create($award->getDate_Award());
                                 ?>
                                 วันที่ : <?php echo date_format($date, 'd/m/Y'); ?>

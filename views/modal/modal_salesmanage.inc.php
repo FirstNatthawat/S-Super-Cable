@@ -22,9 +22,18 @@
                         <input type="date" class="form-control" id="Date_Sales" name="Date_Sales" value=""
                                required="required">
                     </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+function test() {
+	$.ajax({url: "demo_test.php", success: function(result){
+		alert("AAA");
+    $("#ID_Employee").html(result);
+  }});
+}
+</script>
                     <div class="form-group ">
                         <label for="ID_Company" class="col-form-label">ชื่อบริษัทลูกค้า:<span class="text-danger" >*</span></label>
-                        <select data-placeholder="กรุณาเลือกบริษัทลูกค้า" class="js-example-basic-single  form-control" name="ID_Company" id="ID_Company">
+                        <select onchange="alert();test();" data-placeholder="กรุณาเลือกบริษัทลูกค้า" class="js-example-basic-single  form-control" name="ID_Company" id="ID_Company">
                             <option  value="" ></option>
 
                             <?php
@@ -39,7 +48,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="ID_Employee" class="col-form-label">ชื่อพนักงาน:<span class="text-danger" >*</span></label>
+                        <label for="ID_Employee" class="col-form-label">ปชื่อพนักงาน:<span class="text-danger" >*</span></label>
                         <select data-placeholder="กรุณาเลือกพนักงาน"class=" js-example-basic-single form-control" name="ID_Employee" id="ID_Employee">
                             <option  value="" ></option>
 

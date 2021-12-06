@@ -52,7 +52,7 @@ var del_files = [];
 var myDropzone;
 Dropzone.autoDiscover = false;
 $(document).ready(function () {
-  intDropzone();
+   intDropzone();
 });
 
 
@@ -88,54 +88,47 @@ function  newsManageShow(type, ID_Message ) {
   //$('.dz-preview').remove();
   /* clear old form value */
   $('#form_newsManage')[0].reset();
+  $("#thumnails_award_pic").attr("src", "");
+  $("#thumnails_award_pic2").attr("src", "");
+  $("#thumnails_award_pic3").attr("src", "");
 
     switch(type)
     {
       case "create":
         title = "สร้างข่าวสาร";
 
-
         // set id
         $('#button_newsManageModal').attr("data-id", null);
-        $('#form_newsManage input').attr('disabled', false);
-        $('#form_newsManage input').attr('readonly',false);
-        $(".dz-hidden-input").prop("disabled",false);
-        CKEDITOR.instances['Text_Message'].setReadOnly(false);
-        CKEDITOR.instances['Text_Message'].setData('');
+
         //
         form_validte.resetForm();
+
         break;
       case "edit":
 
         // แก้ไขข่าวสาร
         title = "แก้ไขข่าวสาร";
-        //set id
-        $('#button_newsManageModal').attr("data-id", ID_Message);
-        $('#form_newsManage input').attr('disabled', false);
-        $('#form_newsManage input').attr('readonly',false);
-        $(".dz-hidden-input").prop("disabled",false);
-        CKEDITOR.instances['Text_Message'].setReadOnly(false);
-        $(".ck-blurred p").html("")
-
 
         //clear error if exists
         form_validte.resetForm();
         get_news_to_edit(ID_Message);
+
+        // set id
+        $('#button_newsManageModal').attr("data-id", ID_Message);
         break;
       case 'view':
       title = "ดูข่าวสาร ";
       //clear error if exists
       form_validte.resetForm();
+
       get_news_to_view(ID_Message);
-        $('#button_newsManageModal').attr("data-id", ID_Message);
-        $('#form_newsManage input').attr('disabled', true);
-        $('#form_newsManage input').attr('readonly',true);
-        $(".dz-hidden-input").prop("disabled",true);
-        CKEDITOR.instances['Text_Message'].setReadOnly(true);
 
 
+      //$('#form_companymanage input').attr('readonly', 'readonly');
+      //$('#form_companymanage select').attr("disabled", true);
+      //$('#button_companymanageModal').hide();
 
-        break;
+      break;
       default:
         // ..
         break;
@@ -147,9 +140,12 @@ function  newsManageShow(type, ID_Message ) {
     /* set button event  */
     $('#button_newsManageModal').attr("data-status", type);
 
-  /* modal show  */
-
-  $('#newsManageModal').modal('show');
+    /* modal show  */
+    if(type=='view'){
+      $('#newsManageViewModal').modal('show')
+    }else{
+      $('#newsManageModal').modal('show');
+    }
   }
 
 
@@ -267,7 +263,6 @@ function get_news_to_edit(ID_Message) {
       $('#Tittle_Message').val(response.data.Tittle_Message);
       CKEDITOR.instances['Text_Message'].setData(response.data.Text_Message);
       //fArr = [response.data.Picture_Message,response.data.Picture_Message2,response.data.Picture_Message3];
-
       response.data.img.forEach((o)=>{
         fArr.push(o);
       });
@@ -293,12 +288,12 @@ function get_news_to_view(ID_Message) {
     success: function (response, status) {
       /* set input value */
 
-      $('#Tittle_Message').val(response.data.Tittle_Message);
-      CKEDITOR.instances['Text_Message'].setData(response.data.Text_Message);
-      //alert(JSON.stringify(response.data.img));
-      response.data.img.forEach((o)=>{
-        fArr.push(o);
-      });
+      $('#Tittle_Message_view').html(response.data.Tittle_Message);
+      $('#Text_Message_view').html(response.data.Text_Message);
+      $("#thumnails_new_profile_view").attr("src", response.data.Picture_Message);
+      $("#thumnails_new_profile_view2").attr("src", response.data.Picture_Message2);
+      $("#thumnails_new_profile_view3").attr("src", response.data.Picture_Message3);
+
     },
     error: function (xhr, status, exception) {
       console.log(xhr);

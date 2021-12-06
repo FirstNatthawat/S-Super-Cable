@@ -51,21 +51,6 @@ try {
                                             <div class="col-sm-2">
                                                  <button type="submit" class="btn btn-info">ค้นหา</button>
                                             </div>
-
-                                           
-                                        </div>
-                                        <div class="row text-center">
-                                            <div class="col col-sm-12">
-                                                <?php 
-                                                    $dayStart =  date('Y-m').'-01';
-                                                    $dayEnd = date('Y-m-d');
-                                                    $currentTotal = Sales::sumDate($dayStart,$dayEnd);
-                                                    if($currentTotal['p']==''){
-                                                        $currentTotal['p'] = 0;
-                                                    }
-                                                ?>
-                                                ยอดปัจจุบันเดือน <strong> <?=$this->m(date('m'))?> : <?=$currentTotal['p']?> </strong> บาท
-                                            </div>
                                         </div>
                                     </form>
                                 <!-- -->
@@ -78,7 +63,7 @@ try {
                                 <table class="table table-md dataTable no-footer dtr-inline" width="100%">
                                     <tr>
                                         <th width="20%" style="text-align:center;">เดือน</th>
-                                        <!-- <th style="text-align:center;">ยอดขาย</th> -->
+                                        <th style="text-align:center;">ยอดขาย</th>
                                         <th style="text-align:center;">ทำนาย</th>
                                     </tr>
                                 <?php
@@ -87,32 +72,41 @@ try {
                                 $avg = '';
                                 $labels = [];
                                 $dataV = [];
-
-                                array_push($dataV,  $currentTotal['p']);
-                                array_push($labels,  $this->m(date('m')));
-
-                                $expectPerMonth = $currentTotal['p']/$i;
-                                for($index=0;$index<$i;$index++){
-
-                                    array_push($dataV,   str_replace( ',', '', number_format($expectPerMonth,2)));
-                                    array_push($labels,  $this->m( date('m',strtotime("+".($index+1)." month"))));
-
+                                foreach($day as $val){
+                                    $ex = explode('-',$val);
+                                    $startDate = $ex[0].'-'.$ex[1].'-01';
+                                    $endDate = $ex[0].'-'.$ex[1].'-31';
+                                    $total = Sales::sumDate($startDate,$endDate);
+                                    if($total['p']==''){
+                                        $total['p'] = 0;
+                                    }
+                                    $total_sum = $total_sum+$total['p'];
+                                    
+                                    //if($i>$m and $avg == ''){
+                                        $avg = $total_sum/($i-1);
+                                    //}
+                                    if($avg == ''){
+                                        $avg = $total_sum/($i-1);
+                                    }
+                                    $labels[] = $this->m($ex[1]).' '.$ex[0];
+                                    $dataV[] = $avg;
                                 ?>
-                
-                                <tr>
+                                    <tr>
                                         <td style="text-align:center;">
-                                            <?php echo $this->m(date('m',strtotime("+".($index+1)." month")))." ".date('Y',strtotime("+".($index+1)." month")) ?> 
+                                            <?php echo $this->m($ex[1]).' '.$ex[0]; ?> 
                                         </td>
-                                   
                                         <td style="text-align:center;">
-                                            <?=number_format($expectPerMonth,2)?>
+                                            <?php echo $total['p']; ?>
                                         </td>
-                                </tr>
-            
-                                <?php } ?>
-                        
+                                        <td style="text-align:center;">
+                                            <?php echo $avg; ?>
+                                        </td>
+                                    </tr>
+                                <?php   
+                                }
+                                ?>
                                 </table>
-                            <?php } ?>
+                                <?php } ?>
                             </div>
                             <!-- /.card-body -->
                         </div>

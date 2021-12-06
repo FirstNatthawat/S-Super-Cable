@@ -69,14 +69,14 @@ try {
                                                         $status_approve_txt = "ไม่อนุมัติ";
                                                     }
 
-                                                    $type = "ยืม";
+                                                    $type = "เบิก";
                                                     $promotion = Promotion::findById($val->getID_Promotion());
                                                     $showBtn = 0;
                                                     if($val->getType_BorrowOrReturn()=='1' && $promotion->getHave_To_Return()=='1' && $status_approve=='1'){
                                                         $showBtn = 1;
                                                     }
                                                     if($val->getType_BorrowOrReturn()=='2'){
-                                                        $type = "คืน";
+                                                        $type = "ยืม";
                                                     }
                                         ?>
                                             <tr>

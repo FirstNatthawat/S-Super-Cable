@@ -33,7 +33,23 @@
                         </select>
                     </div>
 
+                    <div class="form-group" style="display: none;">
+                        <!-- set default image  -->
+                        <!-- select image to upload -->
+                        <img id="thumnails_award_pic" browsid="award_pic" class="thumnails-premise" src=""  style=""/>
+                        <!-- chosse file -->
+                        <input id="award_pic" name="award_pic" type="file"  style="" onchange="preview();" >
+                        <br/><br/>
 
+                        <img id="thumnails_award_pic2" browsid="award_pic2" class="thumnails-premise" src=""  style=""/>
+                        <!-- chosse file -->
+                        <input id="award_pic2" name="award_pic2" type="file"  style="" onchange="preview2();" >
+                        <br/><br/>
+
+                        <img id="thumnails_award_pic3" browsid="award_pic3" class="thumnails-premise" src=""  style=""/>
+                        <!-- chosse file -->
+                        <input id="award_pic3" name="award_pic3" type="file"  style="" onchange="preview3();" >
+                    </div>
                     <div class="dropzone" id="dropzoneId"></div>
                 </form>
             </div>
@@ -49,3 +65,4 @@
 </div>
 
 
+<script type="text/javascript" src="AdminLTE/assets/js/page/manage_upload_pic_award.js"></script>

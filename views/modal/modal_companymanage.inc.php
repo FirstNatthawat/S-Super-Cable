@@ -99,12 +99,14 @@
                                value="">
                     </div>
                     <div class="form-group">
-                        <label for="IS_Blacklist" class="col-form-label">บัญชีดำ:<span class="text-danger" >*</span></label>
-                        <select name="IS_Blacklist" class="form-control" id="IS_Blacklist">
+                        <label for="IS_Blacklist" class="col-form-label">บัญชีดำ:<span class="text-danger" >*</span></label><br>
+						<input type=radio value="ใช่" id=IS_Blacklist name=IS_Blacklist>ใช่<br>
+						<input type=radio value="ไม่ใช่" id=IS_Blacklist name=IS_Blacklist checked>ไม่ใช่
+                        <!--select name="IS_Blacklist" class="form-control" id="IS_Blacklist">
                             <option value="" selected disabled>-กรุณาเลือก-</option>
                             <option value="ใช่">ใช่</option>
                             <option value="ไม่ใช่">ไม่ใช่</option>
-                        </select>
+                        </select-->
                     </div>
                     <div class="form-group">
                         <label for="Cause_Blacklist" class="col-form-label">สาเหตุที่ติดบัญชีดำ:</label>

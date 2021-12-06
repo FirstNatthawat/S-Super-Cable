@@ -37,7 +37,7 @@ class TrendController
         if(isset($_GET['type'])){
             $type = $_GET['type'];
             $day = [];
-            $day_start = date('Y-m-d',strtotime('+1 month'));
+            $day_start = date('Y-m-d');
             //
             $year = date('Y')-2;
             for( $i = $year; $i < date('Y'); $i++){

@@ -29,13 +29,15 @@
                     </div>
                     <div class="form-group">
                         <label for="PROVINCE_ID" class="col-form-label">จังหวัด:<span class="text-danger" >*</span></label>
-                        <select class="form-control" name="PROVINCE_ID" id="province">
+                        <select class="form-control" name="PROVINCE_ID" id="province" onchange="alert('123'); var select = document.getElementById('province'); alert(select.options[select.selectedIndex].value); if (select.options[select.selectedIndex].value != 1) {alert(select.options[select.selectedIndex].value); document.getElementById('amphure_id').setAttribute('disabled', 'disabled');}">
                             <option value="" selected disabled>-กรุณาเลือกจังหวัด-</option>
-                            <?php
+                            <?php #$text=" ";
 
                             foreach ($provinceList as $province) {
+								
+								#if ($province->getPROVINCE_ID() != 1) {$text = " ";} else {$text = "disabled='disabled'";}
                                 ?>
-                                <option value="<?php echo $province->getPROVINCE_ID(); ?>"><?php echo $province->getPROVINCE_NAME(); ?></option>
+                                <option value="<?php echo $province->getPROVINCE_ID();?>"><?php echo $province->getPROVINCE_NAME(); ?></option>
                                 <?php
                             }
                             ?>
