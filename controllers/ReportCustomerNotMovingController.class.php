@@ -64,7 +64,7 @@ class ReportCustomerNotMovingController
     {
         $employee = $_SESSION['employee'];
         $date_start = $y.'-01-01';
-        $date_end = $y.'-03-31';
+        $date_end = $y.'-12-31';
         $y = date('Y');
        if(isset($_GET['type']) && $_GET['type']=='1'){
             //$date_start = date('Y-m-d');
