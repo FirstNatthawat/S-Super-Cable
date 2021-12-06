@@ -15,8 +15,9 @@
                     
                     <!-- Title_Message -->
                     <div class="form-group ">
-                    <label for="Tittle_Message" class="col-form-label">ชื่อหัวข้อข่าวสาร:<span class="text-danger" >*</span></label>
-                        <input type="text" class="form-control" id="Tittle_Message" name="Tittle_Message" value="" required="required" >
+                        <label for="Tittle_Message" class="col-form-label">ชื่อหัวข้อข่าวสาร:<span class="text-danger" >*</span></label>
+                        <input type="text" class="form-control" id="Tittle_Message" name="Tittle_Message" value=""
+                               required="required">
                     </div>
                     
                    <!-- Text_Message -->
@@ -68,4 +69,3 @@
 </div>
 
 
-<script type="text/javascript" src="AdminLTE/assets/js/page/manage_upload_pic_news.js"></script>

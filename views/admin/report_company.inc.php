@@ -141,8 +141,8 @@ try {
     include Router::getSourcePath() . "views/modal/modal_editprofile.inc.php";
     # modal dialog ( company manage )
     include Router::getSourcePath() . "views/modal/modal_companymanage.inc.php";
-    # modal dialog ( import excel company  )
-    include Router::getSourcePath() . "views/modal/modal_importcompany.inc.php";
+//    # modal dialog ( import excel company  )
+//    include Router::getSourcePath() . "views/modal/modal_importcompany.inc.php";
     include Router::getSourcePath() . "templates/footer_page.inc.php";
 
     ?>

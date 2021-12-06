@@ -131,8 +131,7 @@ try {
     # modal dialog ( news manage )
     include Router::getSourcePath() . "views/modal/modal_newsmanage.inc.php";
     include Router::getSourcePath() . "templates/footer_page.inc.php";
-    # modal dialog ( news view )
-    include Router::getSourcePath() . "views/modal/modal_newsmanage2.inc.php";
+
 
 
     ?>

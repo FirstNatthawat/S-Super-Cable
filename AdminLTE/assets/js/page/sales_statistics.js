@@ -50,7 +50,7 @@ $("#form_search").submit(function(){
           var dataMonth = new Array(3);
           $.each(data, function() {
               //dataMonth[dataIndex] = new Array(12);
-              $.each(this, function(a,b) {
+              $.each(this, function(a,b) {      
                 dataIndex++;
                 dataMonth[dataIndex] = new Array(12);
                 yearArr.push(b.year);
@@ -78,6 +78,10 @@ $("#form_search").submit(function(){
               });
             //dataIndex++;
           });
+
+          dataMonth = dataMonth.slice(dataMonth.length-3 , dataMonth.length)
+          dataYear = dataYear.slice(dataYear.length-3 , dataYear.length)
+
           var total_all = 0;
           for(var i=1;i<=12;i++){
             total_all = total_all+t[i];

@@ -86,15 +86,31 @@ class SalesStatisticsController
     }
 
     private function getReport2(){
+        $sql_ = "SELECT MIN(LEFT(Date_Sales, 4)) AS Y_MIN, MAX(LEFT(Date_Sales, 4)) AS Y_MAX FROM sales";
+        $stmt_ = Db::getInstance()->prepare($sql_);
+        $stmt_->setFetchMode(PDO::FETCH_CLASS, "Date_Sales");
+        $stmt_->execute();
+
+        if ($prod = $stmt_->fetch()) {
+            $year_start = $prod['Y_MIN'];
+            $year_end  =  $prod['Y_MAX'];
+        }
+
+        $year_arr = [];
+
+        for($i=$year_start;$i<=$year_end;$i++){
+            array_push($year_arr,(int) $i);
+        }
+        
         $ID_Employee = $_POST['ID_Employee'];
         //$ID_Employee = 'a004';
         //$year1 = $_POST['year1'];
         //$year2 = $_POST['year1'];
-        $year1 = date('Y');
-        $year2 = date('Y')-1;
-        $year3 = date('Y')-2;
-        $year_start = date('Y')-5;
-        $year_arr = [$year1,$year2,$year3];
+        // $year1 = date('Y');
+        // $year2 = date('Y')-1;
+        // $year3 = date('Y')-2;
+        // // $year_start = date('Y')-5;
+        // $year_arr = [$year1,$year2,$year3];
         $data = [];
         foreach($year_arr as $i){
             for($m=1;$m<=12;$m++){

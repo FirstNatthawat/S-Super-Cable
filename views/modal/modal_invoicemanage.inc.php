@@ -112,10 +112,10 @@
                     ?>
                     <input type="text" name="Percent_Vat"  id="Percent_Vat" class="form-control" value="<?php echo $vatValue; ?>">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label>ส่วนลด</label>
                     <input type="text" name="Discount" id="Discount" class="form-control">
-                </div>
+                </div> -->
                 <fieldset style="margin-bottom:30px;">
                     <legend>เพิ่มรายการสินค้า</legend>
                     <div class="row">

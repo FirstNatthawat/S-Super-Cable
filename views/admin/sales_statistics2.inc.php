@@ -124,9 +124,8 @@ try {
 <script type="text/javascript" src="AdminLTE/assets/js/page/sales_statistics.js"></script>
 <script>
 //form_search
-setTimeout(function(){
+
     $("#form_search").submit();
- }, 1000);
 </script>
 <style>
 .tb_center td{

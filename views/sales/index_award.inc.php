@@ -55,7 +55,6 @@ try {
                                                     <br/>
                                                     <a href="index.php?controller=Award&action=show&id=<?php echo $value->getID_Award(); ?>"><?php echo $value->getTittle_Award(); ?></a>
                                                     <br/>
-                                                    ชื่อคนที่ได้รับรางวัล : <?php echo $value->getFullname_employee(); ?>
                                                 </td>
                                             </tr>
                                         </table>

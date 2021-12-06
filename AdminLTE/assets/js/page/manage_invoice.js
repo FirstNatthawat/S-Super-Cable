@@ -169,6 +169,7 @@ function invoicemanageShow(type, ID_Message ) {
         //alert(JSON.stringify(response.data));
         var total = qty*response.data.Price_Goods;
         if(p_discout_price!==undefined && p_discout_price!==null){
+          p_discout_price = 0;
           total = total-parseInt(p_discout_price);
         }
         var chk = true;
