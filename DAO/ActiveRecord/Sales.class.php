@@ -268,11 +268,11 @@ class Sales
     {
 
         $con = Db::getInstance();
-        #$where = "SELECT sales.ID_Company FROM sales WHERE sales.Date_Sales BETWEEN '".$startDate."' 
+        #$where = "SELECT sales.ID_Company FROM sales WHERE sales.Date_Sales BETWEEN '".$startDate."'
         #           AND '".$endDate."'  ";
-		$where = "where sales.Date_Sales BETWEEN '".$startDate."' AND '".$endDate."'";
+        $where = "where sales.Date_Sales BETWEEN '".$startDate."' AND '".$endDate."'";
         #$query = "SELECT * FROM company WHERE company.ID_Company NOT IN (".$where.") ";
-		$query = "SELECT * FROM `company` inner join sales on company.`ID_Company` = sales.ID_Company ".$where;
+        $query = "SELECT * FROM `company` inner join sales on company.`ID_Company` = sales.ID_Company ".$where;
         #die($query);
         $stmt = $con->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "Company");
