@@ -10,6 +10,7 @@ class Invoice_Detail
     private $Total;
     private $ID_Goods;
     private $ID_Invoice;
+    private $Discount_Price;
     private const TABLE = "invoice_detail";
 
     //----------- Getters & Setters
@@ -68,6 +69,10 @@ class Invoice_Detail
     public function setID_Invoice(int $ID_Invoice)
     {
         $this->ID_Invoice = $ID_Invoice;
+    }
+    public function getDiscount_Price(): float
+    {
+        return $this->Discount_Price;
     }
 
     //----------- CRUD

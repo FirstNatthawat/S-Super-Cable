@@ -61,6 +61,7 @@ class InvoiceController
     }
     private function create_invoice($params)
     {
+
         session_start();
         # สร้างใบเสนอราคา
         $employee = $_SESSION["employee"];
@@ -81,16 +82,13 @@ class InvoiceController
             'Vat_Type' => isset($params['Vat_Type']) ? $params['Vat_Type'] : '0',
             'Percent_Vat' => isset($params['Percent_Vat']) ? $params['Percent_Vat'] : '0',
             'Vat' => isset($params['Vat']) ? $params['Vat'] : '0',
-            'Discount' => isset($params['Discount']) ? $params['Discount'] : '0',
             'Total' => isset($params['Total']) ? $params['Total'] : '0',
             'Grand_Total' => isset($params['Grand_Total']) ? $params['Grand_Total'] : '0',
             'ID_Company' => isset($params['ID_Company']) ? $params['ID_Company'] : '0',
             'ID_Setting_Vat' => isset($params['ID_Setting_Vat']) ? $params['ID_Setting_Vat'] : '1',
-            'Discount'  => isset($params['Discount']) ? $params['Discount'] : '0',
             'ID_Employee' => $emp_id
         ]);
 
-        $discount  = isset($params['Discount']) ? $params['Discount'] : '0';
         $get_inv = Invoice::maxId();
         //print_r($get_inv);
         $inv_id = $get_inv->getID_Invoice();
@@ -117,18 +115,15 @@ class InvoiceController
                         'Total' => ($qty[$key]*$g_pricr)-$p_discout_price[$key],
                         'ID_Goods' => $item,
                         'ID_Invoice' => $inv_id,
-                        'Discout_Price' => $p_discout_price[$key]
+                        'Discount_Price' => $p_discout_price[$key]
                     ]);
-                    $Total = $Total+$qty[$key]*$goods->getPrice_Goods();
+                    $Total = $Total+$qty[$key]*$goods->getPrice_Goods()-$p_discout_price[$key];
                 }
             }
 
             $Total2 = $Total;
             $discount_price = 0;
-            if($discount > 0){
-                $discount_price = ($discount/100)*$Total;
-                $Total = $Total - $discount_price;
-            }
+
 
             $vat = 0;
             if($params['Vat_Type']=='exclude'){
@@ -173,7 +168,6 @@ class InvoiceController
                 'Vat_Type' => $params['Vat_Type'],
                 'Percent_Vat' => isset($params['Percent_Vat']) ? $params['Percent_Vat'] : '',
                 'Vat' => isset($params['Vat']) ? $params['Vat'] : '',
-                'Discount' => isset($params['Discount']) ? $params['Discount'] : '',
                 'Total' => isset($params['Total']) ? $params['Total'] : '',
                 'Grand_Total' => isset($params['Grand_Total']) ? $params['Grand_Total'] : '',
                 'ID_Company' => isset($params['ID_Company']) ? $params['ID_Company'] : '',
@@ -197,7 +191,8 @@ class InvoiceController
                         'Price_Goods' => $goods->getPrice_Goods(),
                         'Total' => $qty[$key]*$goods->getPrice_Goods(),
                         'ID_Goods' => $item,
-                        'ID_Invoice' => $inv_id
+                        'ID_Invoice' => $inv_id,
+                        'Discount_Price' => $Discount_Price[$key]
                     ]);
                     $Total = $Total+$qty[$key]*$goods->getPrice_Goods();
                 }
@@ -239,7 +234,8 @@ class InvoiceController
                     'Price_Goods' => $val->getPrice_Goods(),
                     'Total' => $val->getTotal(),
                     'ID_Goods' => $val->getID_Goods(),
-                    'ID_Invoice' => $val->getID_Invoice()
+                    'ID_Invoice' => $val->getID_Invoice(),
+                    'Discount_Price' => $val->getDiscount_Price()
                 ];
             }
         }
@@ -260,7 +256,6 @@ class InvoiceController
             "Vat_Type" => $invoice->getVat_Type(),
             "Percent_Vat" => $invoice->getPercent_Vat(),
             "Vat" => $invoice->getVat(),
-            "Discount" => $invoice->getDiscount(),
             "Total" => $invoice->getTotal(),
             "Grand_Total" => $invoice->getGrand_Total(),
             "ID_Company" => $invoice->getID_Company(),
@@ -303,7 +298,7 @@ class InvoiceController
         $goodsList = Goods::findAll();
         if ($employee->getUser_Status_Employee() == "Admin") {
             include Router::getSourcePath() . "views/admin/manage_invoice.inc.php";
-        } else if ($employee->getUser_Status_Employee() == "Sales") {   
+        } else if ($employee->getUser_Status_Employee() == "Sales") {
             include Router::getSourcePath() . "views/admin/manage_invoice.inc.php";
         }
     }
@@ -322,12 +317,13 @@ class InvoiceController
                     'Price_Goods' => $val->getPrice_Goods(),
                     'Total' => $val->getTotal(),
                     'ID_Goods' => $val->getID_Goods(),
-                    'ID_Invoice' => $val->getID_Invoice()
+                    'ID_Invoice' => $val->getID_Invoice(),
+                    'Discount_Price' =>$val->getDiscount_Price()
                 ];
             }
         }
 
-        
+
         $data_sendback = array(
             "ID_Invoice" => $invoice->getID_Invoice(),
             "Invoice_No" => $invoice->getInvoice_No(),
@@ -344,8 +340,6 @@ class InvoiceController
             "Vat_Type" => $invoice->getVat_Type(),
             "Percent_Vat" => $invoice->getPercent_Vat(),
             "Vat" => $invoice->getVat(),
-            "Discount" => $invoice->getDiscount(),
-            "Discount_price" => $invoice->getDiscount_price(),
             "Total" => $invoice->getTotal(),
             "Grand_Total" => $invoice->getGrand_Total(),
             "ID_Company" => $invoice->getID_Company(),

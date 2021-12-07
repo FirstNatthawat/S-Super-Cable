@@ -191,6 +191,7 @@ function companymanageShow(type, ID_Company = null) {
       $('#button_companymanageModal').attr("data-id", null);
       $('#form_companymanage textarea').attr("disabled", false);
       $('#form_companymanage textarea').attr("readonly", false);
+      $( '#form_companymanage input:radio' ).attr( 'disabled', false );
 
       $('#ID_Employee').val('');
 
@@ -202,6 +203,7 @@ function companymanageShow(type, ID_Company = null) {
 
       onaction_getinptval(ID_Company);
       $('#form_companymanage textarea').attr("disabled", false);
+      $( '#form_companymanage input:radio' ).attr( 'disabled', false );
 
       break;
     case 'view':
@@ -214,6 +216,7 @@ function companymanageShow(type, ID_Company = null) {
       $('#form_companymanage input').attr('readonly', 'readonly');
       $('#form_companymanage select').attr("disabled", true);
       $('#form_companymanage textarea').attr("disabled", true);
+      $( '#form_companymanage input:radio' ).attr( 'disabled', true );
       $('#button_companymanageModal').hide();
 
       break;
@@ -265,10 +268,7 @@ function onaction_getinptval(ID_Company) {
         .val(response.data.Cluster_Shop_ID)
         .trigger('change');
       $('#Contact_Name_Company').val(response.data.Contact_Name_Company);
-      // case: dropdown
-      $('#IS_Blacklist')
-        .val(response.data.IS_Blacklist)
-        .trigger('change');
+      $('input:radio[name="IS_Blacklist"]').attr('checked',true);
       $('#Cause_Blacklist').val(response.data.Cause_Blacklist);
       $('#ID_Employee').val(response.data.ID_Employee);
       // set id

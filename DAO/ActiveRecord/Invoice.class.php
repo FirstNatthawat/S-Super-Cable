@@ -18,12 +18,10 @@ class Invoice
     private $Vat_Type;
     private $Percent_Vat;
     private $Vat;
-    private $Discount;
     private $Total;
     private $Grand_Total;
     private $ID_Company;
     private $ID_Setting_Vat;
-    private $Discount_price;
     private const TABLE = "invoice";
 
     //----------- Getters & Setters
@@ -147,7 +145,7 @@ class Invoice
     {
         return $this->Percent_Vat;
     }
-    public function setPercent_Vat(string $Percent_Vat)
+    public function setPercent_Vat(int $Percent_Vat)
     {
         $this->Percent_Vat = $Percent_Vat;
     }
@@ -159,14 +157,7 @@ class Invoice
     {
         $this->Vat = $Vat;
     }
-    public function getDiscount(): float
-    {
-        return $this->Discount;
-    }
-    public function setDiscount(float $Discount)
-    {
-        $this->Discount = $Discount;
-    }
+
     public function getTotal(): float
     {
         return $this->Total;
@@ -200,10 +191,6 @@ class Invoice
         $this->ID_Setting_Vat = $ID_Setting_Vat;
     }
 
-    public function getDiscount_price(): float
-    {
-        return $this->Discount_price!==null ? $this->Discount_price : '0' ;
-    }
 
     //----------- CRUD
     public static function findAll(): array
@@ -244,8 +231,8 @@ class Invoice
         }
         $values = substr($values, 0, -1);
         $query = "INSERT INTO " . self::TABLE . " ({$columns}) VALUES ($values)";
-        //echo $query;
-        //exit;
+//        echo $query;
+//        exit;
         //return $query;
         # execute query
         if ($con->exec($query)) {
@@ -285,7 +272,7 @@ class Invoice
         $con = Db::getInstance();
         $con->exec($query);
         $query = "DELETE FROM " . self::TABLE . " WHERE ID_Invoice = '{$ID_Invoice}' ";
-      
+
         $con = Db::getInstance();
         if ($con->exec($query)) {
             return array("status" => true);

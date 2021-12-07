@@ -52,6 +52,19 @@ try {
                                                  <button type="submit" class="btn btn-info">ค้นหา</button>
                                             </div>
                                         </div>
+                                    <div class="row text-center">
+                                        <div class="col col-sm-12">
+                                            <?php
+                                            $dayStart =  date('Y-m').'-01';
+                                            $dayEnd = date('Y-m-d');
+                                            $total = Sales::sumDate($dayStart,$dayEnd);
+                                            if($total['p']==''){
+                                                $total['p'] = 0;
+                                            }
+                                            ?>
+                                            ยอดปัจจุบันเดือน <strong> <?=$this->m(date('m'))?> : <?=$total['p']?> </strong> บาท
+                                        </div>
+                                    </div>
                                 </form>
                                 <!-- -->                                  
                                 </div>
@@ -63,7 +76,7 @@ try {
                                 <table class="table table-md dataTable no-footer dtr-inline" width="100%">
                                     <tr>
                                         <th width="20%" style="text-align:center;">เดือน</th>
-                                        <th style="text-align:center;">ยอดขาย</th>
+                                        <!-- <th style="text-align:center;">ยอดขาย</th> -->
                                         <th style="text-align:center;">ทำนาย</th>
                                     </tr>
                                 <?php
@@ -72,29 +85,30 @@ try {
                                 $avg = '';
                                 $labels = [];
                                 $dataV = [];
+                                array_push($dataV,  $total['p']);
+                                array_push($labels,  $this->m(date('m')));
+
                                 foreach($day as $val){
                                     $ex = explode('-',$val);
-                                    $startDate = $ex[0].'-'.$ex[1].'-01';
-                                    $endDate = $ex[0].'-'.$ex[1].'-31';
-                                    $total = Sales::sumDate($startDate,$endDate);
                                     $m = number_format($ex[1]);
                                     $avg = ($si['slope']*$m)+$si['intercept'];
 
-                                    $labels[] = $this->m($ex[1]).' '.$ex[0];
+
+                                    $labels[] = $this->m( date('m',strtotime("+".($ex[1]+1)." month")));
                                     $dataV[] = str_replace(',','',number_format($avg,2));
                                 ?>
                                     <tr>
                                         <td style="text-align:center;">
-                                            <?php echo $this->m($ex[1]).' '.$ex[0]; ?> 
+
+                                            <?php echo $this->m(date('m',strtotime("+".($ex[1]+1)." month")))." ".date('Y',strtotime("+".($ex[1])." month")) ?>
+
                                         </td>
-                                        <td style="text-align:center;">
-                                            <?php echo $total['p']; ?>
-                                        </td>
+
                                         <td style="text-align:center;">
                                             <?php echo number_format($avg,2); ?>
                                         </td>
                                     </tr>
-                                <?php   
+                                <?php
                                 }
                                 ?>
                                 </table>

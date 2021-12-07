@@ -136,7 +136,7 @@ body {
           <td><?php echo $val['Name_Goods']; ?></td>
           <td style="text-align: right;"><?php echo number_format($val['Quantity_Goods']); ?></td>
           <td style="text-align:right;"><?php echo number_format($val['Price_Goods'],2); ?></td>
-          <td></td>
+          <td style="text-align:right;"><?php echo number_format($val['Discount_Price'],2);?></td>
           <td style="text-align:right;"><?php echo number_format($val['Total'],2); ?></td>
         </tr>
         <?php 
@@ -151,10 +151,7 @@ body {
           <td colspan="5" style="text-align: right;">จำนวนเงิน VAT</td>
           <td style="text-align: right;"><b><?php echo number_format($data_sendback['Vat'],2); ?></b></td>
         </tr>
-        <tr>
-          <td colspan="5" style="text-align: right;">ส่วนลด</td>
-          <td style="text-align: right;"><b><?php echo number_format($data_sendback['Discount_price'],2); ?></b></td>
-        </tr>
+
         <tr>
           <td colspan="5" style="text-align: right;">ร่วมสุทธิ</td>
           <td style="text-align: right;"><b><?php echo number_format($data_sendback['Grand_Total'],2); ?></b></td>

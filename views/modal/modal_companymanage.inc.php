@@ -106,8 +106,8 @@
 <!--                            <option value="ไม่ใช่">ไม่ใช่</option>-->
 <!--                        </select>-->
                         <label for="IS_Blacklist" class="col-form-label">บัญชีดำ:<span class="text-danger" >*</span></label><br>
-                        <input type=radio value="ใช่" id=IS_Blacklist name=IS_Blacklist>ใช่<br>
-                        <input type=radio value="ไม่ใช่" id=IS_Blacklist name=IS_Blacklist checked>ไม่ใช่
+                        <input type=radio value="ใช่"  name=IS_Blacklist>ใช่
+                        <input type=radio value="ไม่ใช่"  name=IS_Blacklist checked >ไม่ใช่
                     </div>
                     <div class="form-group">
                         <label for="Cause_Blacklist" class="col-form-label">สาเหตุที่ติดบัญชีดำ:</label>
