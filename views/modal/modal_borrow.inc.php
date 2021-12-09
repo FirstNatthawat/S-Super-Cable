@@ -11,16 +11,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group " style="display: none;">
-                        <label for="ID_Promotion" class="col-form-label">ยืม-คืน:<span class="text-danger" >*</span></label>
+                        <label for="ID_Promotion" class="col-form-label">เบิก-ยืม/คืน-คืน:<span class="text-danger" >*</span></label>
                         <select  class="form-control" id="Type_BorrowOrReturn" name="Type_BorrowOrReturn" readonly>
                             <option value="">--เลือก--</option>
-                            <option value="1">ยืม</option>
+                            <option value="1">เบิก-ยืม</option>
                             <option value="2">คืน</option>
                         </select>
                     </div>
                     <div class="form-group ">
 
-                        <label for="ID_Promotion" class="col-form-label">สินค้า:<span class="text-danger" >*</span></label>
+                        <label for="ID_Promotion" class="col-form-label">สินค้าส่งเสริมการขาย:<span class="text-danger" >*</span></label>
                         <select  class="form-control" id="ID_Promotion" name="ID_Promotion">
                             <option value="">--เลือก--</option>
                             <?php
@@ -35,7 +35,7 @@
                         </select>
                     </div>
                     <div class="form-group" id="devDetail_BorrowOrReturns">
-                        <label for="Detail_BorrowOrReturns" class="col-form-label">รายละเอียดการยืม:</label>
+                        <label for="Detail_BorrowOrReturns" class="col-form-label">รายละเอียดการเบิก-ยืม:</label>
                         <textarea class="form-control" name="Detail_BorrowOrReturn" id="Detail_BorrowOrReturns" rows="5" cols="60"></textarea>
                     </div>
                     <div class="form-group">
