@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update by first">
+    <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update invoice by first (create)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_company.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_company.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_invoice.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_invoice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAO/ActiveRecord/Invoice.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/DAO/ActiveRecord/Invoice.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAO/ActiveRecord/Invoice_Detail.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/DAO/ActiveRecord/Invoice_Detail.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/InvoiceController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/InvoiceController.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/download/inv.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/download/inv.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inv.php" beforeDir="false" afterPath="$PROJECT_DIR$/inv.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/trend2.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/trend2.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/modal/modal_companymanage.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/modal/modal_companymanage.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/modal/modal_invoicemanage.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/modal/modal_invoicemanage.inc.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,14 +301,8 @@
       <workItem from="1638867200104" duration="11350000" />
       <workItem from="1638878743700" duration="11374000" />
       <workItem from="1638892342616" duration="1550000" />
-      <workItem from="1638893939155" duration="1336000" />
-    </task>
-    <task id="LOCAL-00072" summary="case : update company">
-      <created>1627743352118</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1627743352118</updated>
+      <workItem from="1638893939155" duration="1610000" />
+      <workItem from="1639019091579" duration="3234000" />
     </task>
     <task id="LOCAL-00073" summary="case : update xls">
       <created>1627901481478</created>
@@ -653,7 +640,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638788334297</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="case : update invoice by first (create)">
+      <created>1638895551969</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1638895551969</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,7 +667,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="case : update zone and resultsales" />
     <MESSAGE value="case : update select2" />
     <MESSAGE value="case : update xls and input disable" />
     <MESSAGE value="case : update zone" />
@@ -698,7 +691,8 @@
     <MESSAGE value="ีcase update" />
     <MESSAGE value="case : update" />
     <MESSAGE value="case : update by first" />
-    <option name="LAST_COMMIT_MESSAGE" value="case : update by first" />
+    <MESSAGE value="case : update invoice by first (create)" />
+    <option name="LAST_COMMIT_MESSAGE" value="case : update invoice by first (create)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

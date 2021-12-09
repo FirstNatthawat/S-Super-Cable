@@ -111,7 +111,7 @@ class InvoiceController
                     $access_invoice_detail->create_invoice_detail([
                         'Name_Goods' => $goods->getName_Goods(),
                         'Quantity_Goods' => $qty[$key],
-                        'Price_Goods' => $g_pricr,
+                        'Price_Goods' => $goods->getPrice_Goods(),
                         'Total' => ($qty[$key]*$g_pricr)-$p_discout_price[$key],
                         'ID_Goods' => $item,
                         'ID_Invoice' => $inv_id,
@@ -121,7 +121,6 @@ class InvoiceController
                 }
             }
 
-            $Total2 = $Total;
             $discount_price = 0;
 
 
@@ -132,15 +131,18 @@ class InvoiceController
             }else if($params['Vat_Type']=='include'){
                 //$vat = $Total*($percent_Vat/(100+$percent_Vat));
                 $vat =  $inc_vat;
-                $Total = $Total-$vat;
+                $Total = $Total-$get_vat;
                 $GrandTotal = $Total+$vat;
-            }else{
+            }else if($params['Vat_Type']=='novat'){
+                $vat = 0;
                 $GrandTotal = $Total;
             }
+            else
+                $GrandTotal = $Total;
             $invoice_result = $access_invoice->edit_invoice(
                 [
                     'Vat' => $vat,
-                    'Total' => $Total2,
+                    'Total' => $Total,
                     'Discount_price' => $discount_price,
                     'Grand_Total' => $GrandTotal
                 ], $inv_id
@@ -177,6 +179,9 @@ class InvoiceController
 
         $inv_id = $ID_Invoice;
         $qty = $params['qty_array'];
+        $p_discout_price = $params['p_discout_price'];
+        $percent_Vat = isset($params['Percent_Vat']) ? $params['Percent_Vat'] : '0';
+        $inc_vat = 0;
         $access_invoice_detail = new Invoice_Detail();
         //Invoice_Detail::delete_invoice_detail_by_inv($inv_id);
         $access_invoice_detail->delete_invoice_detail_by_inv($inv_id);
@@ -184,28 +189,51 @@ class InvoiceController
         if($invoice_result['status']==true){
             if(count($params['goods_array'])>0){
                 foreach($params['goods_array'] as $key => $item){
+
                     $goods = Goods::findById($item);
+                    $g_pricr = $goods->getPrice_Goods();
+                    if($params['Vat_Type']=='include'){
+                        $get_vat = $g_pricr*($percent_Vat/(100+$percent_Vat));
+                        $g_pricr = number_format($g_pricr, 2,'.', '');
+                        $inc_vat = $inc_vat+($get_vat*$qty[$key]);
+                    }
                     $access_invoice_detail->create_invoice_detail([
                         'Name_Goods' => $goods->getName_Goods(),
                         'Quantity_Goods' => $qty[$key],
                         'Price_Goods' => $goods->getPrice_Goods(),
-                        'Total' => $qty[$key]*$goods->getPrice_Goods(),
+                        'Total' => ($qty[$key]*$g_pricr)-$p_discout_price[$key],
                         'ID_Goods' => $item,
                         'ID_Invoice' => $inv_id,
-                        'Discount_Price' => $Discount_Price[$key]
+                        'Discount_Price' => $p_discout_price[$key]
                     ]);
-                    $Total = $Total+$qty[$key]*$goods->getPrice_Goods();
+                    $Total = $Total+$qty[$key]*$goods->getPrice_Goods()-$p_discout_price[$key];
                 }
             }
-            $percent_Vat = isset($params['Percent_Vat']) ? $params['Percent_Vat'] : '0';
-            $vat = $Total*($percent_Vat/100);
-            $GrandTotal = $Total+$vat;
+            $discount_price = 0;
+
+
+            $vat = 0;
+            if($params['Vat_Type']=='exclude'){
+                $vat = $Total*($percent_Vat/100);
+                $GrandTotal = $Total+$vat;
+            }else if($params['Vat_Type']=='include'){
+                //$vat = $Total*($percent_Vat/(100+$percent_Vat));
+                $vat =  $inc_vat;
+                $Total = $Total-$get_vat;
+                $GrandTotal = $Total+$vat;
+            }else if($params['Vat_Type']=='novat'){
+                $vat = 0;
+                $GrandTotal = $Total;
+            }
+            else
+                $GrandTotal = $Total;
             $invoice_result = $access_invoice->edit_invoice(
                 [
                     'Vat' => $vat,
                     'Total' => $Total,
+                    'Discount_price' => $discount_price,
                     'Grand_Total' => $GrandTotal
-                ], $ID_Invoice
+                ], $inv_id
             );
         }
         echo json_encode($invoice_result);
