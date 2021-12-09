@@ -92,6 +92,8 @@ class Goods
         }
         $values = substr($values, 0, -1);
         $query = "INSERT INTO " . self::TABLE . "({$columns}) VALUES ($values)";
+//        print_r($query);
+//        exit();
         # execute query
         if ($con->exec($query)) {
             return array("status" => true);

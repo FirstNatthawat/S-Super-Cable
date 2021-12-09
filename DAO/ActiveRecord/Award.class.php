@@ -5,9 +5,6 @@ class Award
     //------------- Properties
     private $ID_Award;
     private $Tittle_Award;
-    private $Picture_Award;
-    private $Picture_Award2;
-    private $Picture_Award3;
     private $Date_Award;
     private $ID_Employee;
     private $fullname_employee;
@@ -48,36 +45,7 @@ class Award
         $this->Tittle_Award = $Tittle_Award;
     }
 
-    // --- picture Award
-    public function getPicture_Award(): string 
-    {
-        return $this->Picture_Award;
-    }
 
-    public function setPicture_Award(string $Picture_Award)
-    {
-        $this->Picture_Award = $Picture_Award;
-    }
-    public function getPicture_Award2(): string
-    {
-        return $this->Picture_Award2;
-    }
-
-    public function setPicture_Award2(string $Picture_Award2)
-    {
-        $this->Picture_Award2 = $Picture_Award2;
-    }
-    public function getPicture_Award3(): string
-    {
-        return $this->Picture_Award3;
-    }
-
-    public function setPicture_Award3(string $Picture_Award3)
-    {
-        $this->Picture_Award3 = $Picture_Award3;
-    }
-
-    // --- date Award
     public function getDate_Award(): string 
     {
         return $this->Date_Award;
@@ -253,7 +221,8 @@ class Award
         }
         $values = substr($values, 0, -1);
         $query = "INSERT INTO " . self::TABLE . "({$columns}) VALUES ($values)";
-
+//print_r($query);
+//exit();
         # execute query
         if ($con->exec($query)) {
             $emp = new Employee();

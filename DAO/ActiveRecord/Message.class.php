@@ -6,9 +6,6 @@ class Message
     private $ID_Message;
     private $Tittle_Message;
     private $Text_Message;
-    private $Picture_Message;
-    private $Picture_Message2;
-    private $Picture_Message3;
     private $Date_Message;
     private $status;
     private $unread;
@@ -67,30 +64,6 @@ class Message
     }
 
 
-    // --- picture message
-    public function getPicture_Message(): string 
-    {
-        return $this->Picture_Message === null ? "" : $this->Picture_Message;
-    }
-
-    // --- picture message
-    public function getPicture_Message2(): string 
-    {
-        return $this->Picture_Message2 === null ? "" : $this->Picture_Message2;
-    }
-
-
-    // --- picture message
-    public function getPicture_Message3(): string 
-    {
-        return $this->Picture_Message3 === null ? "" : $this->Picture_Message3;
-    }
-
-
-    public function setPicture_Message(string $Picture_Message)
-    {
-        $this->Picture_Message = $Picture_Message;
-    }
 
     // --- date message
     public function getDate_Message(): string 
@@ -240,7 +213,8 @@ class Message
         }
         $values = substr($values, 0, -1);
         $query = "INSERT INTO " . self::TABLE . "({$columns}) VALUES ($values)";
-
+//print_r($query);
+//exit();
         # execute query
         if ($con->exec($query)) {
             $emp = new Employee();

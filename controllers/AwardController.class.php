@@ -125,9 +125,7 @@ class AwardController
         $award_title =  $params["Tittle_Award"] ;
      
         $award_datetime = $access_award->geneateDateTime();
-        $locate_img = "";
-        $locate_img2 = "";
-        $locate_img3 = "";
+
         $award_ID_Employee = $params["ID_Employee"];
         if(isset($FILE_IMG)){
             for($i=0;$i<=count($FILE_IMG['name']);$i++){
@@ -150,9 +148,6 @@ class AwardController
         $access_award_params = array(
             "ID_Award" => $awardid,
             "Tittle_Award" => $award_title,
-            "Picture_Award" => '',
-            "Picture_Award2" => '',
-            "Picture_Award3" => '',
             "Date_Award"=> $award_datetime,
             "ID_Employee" => !empty($award_ID_Employee) ? $award_ID_Employee : null ,
         );
@@ -182,9 +177,6 @@ class AwardController
         $data_sendback = array(
             "ID_Award" => $award->getID_Award(),
             "Tittle_Award" => $award->getTittle_Award(),
-            "Picture_Award" => $award->getPicture_Award(),
-            "Picture_Award2" => $award->getPicture_Award2(),
-            "Picture_Award3" => $award->getPicture_Award3(),
             "Date_Award" => $award->getDate_Award(),
             "ID_Employee" => $award->getID_Employee(),
             "img" => $img_arr
@@ -225,9 +217,6 @@ class AwardController
         $access_award_params = array(
             "ID_Award" => $awardid,
             "Tittle_Award" => $award_title,
-            "Picture_Award" => '',
-            "Picture_Award2" => '',
-            "Picture_Award3" => '',
             "Date_Award"=> $award_datetime,
         );
 

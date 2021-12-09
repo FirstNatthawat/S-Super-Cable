@@ -43,6 +43,8 @@ class Message_Image
         }
         $values = substr($values, 0, -1);
         $query = "INSERT INTO " . self::TABLE . "({$columns}) VALUES ($values)";
+//        print_r($query);
+//        exit();
         if ($con->exec($query)) {
             return array("status" => true);
         } else {

@@ -273,6 +273,8 @@ class Sales
         $where = "where sales.Date_Sales BETWEEN '".$startDate."' AND '".$endDate."'";
         #$query = "SELECT * FROM company WHERE company.ID_Company NOT IN (".$where.") ";
         $query = "SELECT * FROM `company` inner join sales on company.`ID_Company` = sales.ID_Company ".$where;
+        //$query = "SELECT *, DATEDIFF( CURRENT_DATE(),MAX(sales.Date_Sales)) AS SUM   FROM `company` inner join sales on company.`ID_Company` = sales.ID_Company where ID_Company ='{$ID_Company}'";
+
         #die($query);
         $stmt = $con->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "Company");

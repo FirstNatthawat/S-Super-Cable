@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update db by first">
+    <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update word borrow by first">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/borrow.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/borrow.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/borrow_approve_history.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/borrow_approve_history.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/borrow_approve_list.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/borrow_approve_list.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/modal/modal_borrow.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/modal/modal_borrow.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/modal/modal_borrow_approve_edit.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/modal/modal_borrow_approve_edit.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAO/ActiveRecord/Award.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/DAO/ActiveRecord/Award.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAO/ActiveRecord/Goods.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/DAO/ActiveRecord/Goods.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAO/ActiveRecord/Message.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/DAO/ActiveRecord/Message.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAO/ActiveRecord/Message_Image.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/DAO/ActiveRecord/Message_Image.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAO/ActiveRecord/Sales.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/DAO/ActiveRecord/Sales.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/AwardController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AwardController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/NewsController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/NewsController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/download/inv.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/download/inv.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/download/report_customer.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/download/report_customer.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/download/report_customer_notmoving.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/download/report_customer_notmoving.pdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,21 +311,12 @@
       <workItem from="1638893939155" duration="1610000" />
       <workItem from="1639019091579" duration="3400000" />
       <workItem from="1639024765138" duration="25000" />
-      <workItem from="1639025874067" duration="325000" />
-    </task>
-    <task id="LOCAL-00076" summary="case : update  cluster shop js">
-      <created>1627906899711</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1627906899712</updated>
-    </task>
-    <task id="LOCAL-00077" summary="case : update  db">
-      <created>1627907134205</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1627907134206</updated>
+      <workItem from="1639025874067" duration="597000" />
+      <workItem from="1639026552185" duration="1485000" />
+      <workItem from="1639028940348" duration="2200000" />
+      <workItem from="1639032026360" duration="1513000" />
+      <workItem from="1639034910433" duration="1446000" />
+      <workItem from="1639036662392" duration="2090000" />
     </task>
     <task id="LOCAL-00078" summary="case : update cluster company by join cluster table">
       <created>1627985583747</created>
@@ -651,7 +647,21 @@
       <option name="project" value="LOCAL" />
       <updated>1639024782345</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="case : update word borrow by first">
+      <created>1639026250960</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1639026250961</updated>
+    </task>
+    <task id="LOCAL-00126" summary="case : update word borrow by first">
+      <created>1639026404274</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1639026404275</updated>
+    </task>
+    <option name="localTasksCounter" value="127" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,7 +681,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="case : update zone" />
     <MESSAGE value="case : update have to return promotion" />
     <MESSAGE value="case : update inovice" />
     <MESSAGE value="case : delete invoice" />
@@ -696,14 +705,15 @@
     <MESSAGE value="case : update invoice by first (create)" />
     <MESSAGE value="case : update invoice by first" />
     <MESSAGE value="case : update db by first" />
-    <option name="LAST_COMMIT_MESSAGE" value="case : update db by first" />
+    <MESSAGE value="case : update word borrow by first" />
+    <option name="LAST_COMMIT_MESSAGE" value="case : update word borrow by first" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/controllers/AwardController.class.php</url>
-          <line>130</line>
+          <line>128</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">

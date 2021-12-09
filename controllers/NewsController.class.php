@@ -151,9 +151,6 @@ class NewsController
             "ID_Message" => $messageid,
             "Tittle_Message" => $message_title,
             "Text_Message" => $message_text,
-            "Picture_Message" => '',
-            "Picture_Message2" => '',
-            "Picture_Message3" => '',
             "Date_Message"=> $message_datetime,
         );
 
@@ -179,9 +176,6 @@ class NewsController
             "ID_Message" => $message->getID_Message(),
             "Tittle_Message" => $message->getTittle_Message(),
             "Text_Message" => $message->getText_Message(),
-            "Picture_Message" => isset($img[0]) ? Router::getSourcePath() . "images/".$img[0]->getImage_name() : "",
-            "Picture_Message2" => isset($img[1]) ? Router::getSourcePath() . "images/".$img[1]->getImage_name() : "",
-            "Picture_Message3" => isset($img[2]) ? Router::getSourcePath() . "images/".$img[2]->getImage_name() : "",
             "Date_Message" => $message->getDate_Message(),
             "img" => $img_arr
         );
@@ -224,9 +218,6 @@ class NewsController
             "ID_Message" => $messageid,
             "Tittle_Message" => $message_title,
             "Text_Message" => $message_text,
-            "Picture_Message" => '',
-            "Picture_Message2" => '',
-            "Picture_Message3" => '',
             "Date_Message"=> $message_datetime,
         );
 
