@@ -97,14 +97,14 @@ function modalShow(type, selectID = null) {
   $('#form_modal')[0].reset();
   switch (type) {
     case 'create':
-      title = "ยืมสินค้า";
+      title = "ยืม/เบิกสินค้าส่งเสริมการขาย";
       $('#button_modal').attr("data-id","");
       $('#Type_BorrowOrReturn').val('1');
 
       $('#devDetail_BorrowOrReturns').show();
       break;
     case 'edit':
-      title = "เเก้ไขสินค้า";
+      title = "เเก้ไขสินค้าสินค้าส่งเสริมการขาย";
       //clear error if exists
       onaction_edit(selectID);
       break;
