@@ -63,7 +63,7 @@ try {
                                     <table id="tbl_companymanagement" class="table table-md" style="width:100%;">
                                         <thead>
                                         <tr>
-                                            <th>เลขที่</th>
+                                            <th>ไอดีบริษัท</th>
                                             <th>ชื่อบริษัท</th>
                                             <!--<th>ที่อยู่บริษัท</th>-->
                                             <th>เบอร์บริษัท</th>
@@ -81,12 +81,12 @@ try {
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php $i = 1; ?>
+
                                         <?php foreach ($company as $key => $value) { 
                                             
                                             ?>
                                             <tr>
-                                                <td><?php echo $i++; ?></td>
+                                                <td><?php echo $value->getID_Company(); ?></td>
                                                 <td><?php echo $value->getName_Company(); ?></td>
                                              
                                                 <td><?php echo $value->getTel_Company(); ?></td>

@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update word borrow by first">
+    <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update messge+award borrow by first">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAO/ActiveRecord/Award.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/DAO/ActiveRecord/Award.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAO/ActiveRecord/Goods.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/DAO/ActiveRecord/Goods.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAO/ActiveRecord/Message.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/DAO/ActiveRecord/Message.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAO/ActiveRecord/Message_Image.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/DAO/ActiveRecord/Message_Image.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAO/ActiveRecord/Sales.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/DAO/ActiveRecord/Sales.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/AwardController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AwardController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/NewsController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/NewsController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/download/inv.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/download/inv.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/download/report_customer.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/download/report_customer.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/download/report_customer_notmoving.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/download/report_customer_notmoving.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/manage_company.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/manage_company.inc.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -317,13 +308,9 @@
       <workItem from="1639032026360" duration="1513000" />
       <workItem from="1639034910433" duration="1446000" />
       <workItem from="1639036662392" duration="2090000" />
-    </task>
-    <task id="LOCAL-00078" summary="case : update cluster company by join cluster table">
-      <created>1627985583747</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1627985583748</updated>
+      <workItem from="1639044194576" duration="100000" />
+      <workItem from="1639119215713" duration="426000" />
+      <workItem from="1639135376442" duration="372000" />
     </task>
     <task id="LOCAL-00079" summary="case : update select2">
       <created>1628084884105</created>
@@ -661,7 +648,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639026404275</updated>
     </task>
-    <option name="localTasksCounter" value="127" />
+    <task id="LOCAL-00127" summary="case : update messge+award borrow by first">
+      <created>1639044221438</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1639044221439</updated>
+    </task>
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -681,7 +675,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="case : update have to return promotion" />
     <MESSAGE value="case : update inovice" />
     <MESSAGE value="case : delete invoice" />
     <MESSAGE value="case : update sales" />
@@ -706,7 +699,8 @@
     <MESSAGE value="case : update invoice by first" />
     <MESSAGE value="case : update db by first" />
     <MESSAGE value="case : update word borrow by first" />
-    <option name="LAST_COMMIT_MESSAGE" value="case : update word borrow by first" />
+    <MESSAGE value="case : update messge+award borrow by first" />
+    <option name="LAST_COMMIT_MESSAGE" value="case : update messge+award borrow by first" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
