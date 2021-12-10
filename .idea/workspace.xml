@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update messge+award borrow by first">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/manage_company.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/manage_company.inc.php" afterDir="false" />
-    </list>
+    <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update  by first" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -310,14 +307,7 @@
       <workItem from="1639036662392" duration="2090000" />
       <workItem from="1639044194576" duration="100000" />
       <workItem from="1639119215713" duration="426000" />
-      <workItem from="1639135376442" duration="372000" />
-    </task>
-    <task id="LOCAL-00079" summary="case : update select2">
-      <created>1628084884105</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1628084884106</updated>
+      <workItem from="1639135376442" duration="393000" />
     </task>
     <task id="LOCAL-00080" summary="case : update select2 and update award and message by using only sales (delete file of user)">
       <created>1628589709717</created>
@@ -655,7 +645,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639044221439</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="case : update  by first">
+      <created>1639135764536</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1639135764537</updated>
+    </task>
+    <option name="localTasksCounter" value="129" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -675,7 +672,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="case : update inovice" />
     <MESSAGE value="case : delete invoice" />
     <MESSAGE value="case : update sales" />
     <MESSAGE value="case : update date format" />
@@ -700,7 +696,8 @@
     <MESSAGE value="case : update db by first" />
     <MESSAGE value="case : update word borrow by first" />
     <MESSAGE value="case : update messge+award borrow by first" />
-    <option name="LAST_COMMIT_MESSAGE" value="case : update messge+award borrow by first" />
+    <MESSAGE value="case : update  by first" />
+    <option name="LAST_COMMIT_MESSAGE" value="case : update  by first" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

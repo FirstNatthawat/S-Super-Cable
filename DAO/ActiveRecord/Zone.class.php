@@ -5,7 +5,6 @@ class Zone
     //------------- Properties
     private $ID_Zone;
     private $ID_Employee;
-    private $ID_Company;
     private $AMPHUR_ID;
     private $PROVINCE_ID;
     private const TABLE = "zone";
@@ -27,14 +26,7 @@ class Zone
     {
         $this->$ID_Employee = $ID_Employee;
     }
-    public function getID_Company(): string
-    {
-        return $this->ID_Company;
-    }
-    public function setID_Company(string $ID_Company)
-    {
-        $this->$ID_Company = $ID_Company;
-    }
+
     public function getAMPHUR_ID(): int
     {
         return $this->AMPHUR_ID;
