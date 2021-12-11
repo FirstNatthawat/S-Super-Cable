@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update surname zone by first">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminLTE/assets/js/page/emp_statistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminLTE/assets/js/page/emp_statistics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminLTE/assets/js/page/sales_statistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminLTE/assets/js/page/sales_statistics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/FileController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/FileController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/report_borrow.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/report_borrow.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/report_customer2.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/report_customer2.inc.php" afterDir="false" />
-    </list>
+    <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update  by first" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -319,14 +312,7 @@
       <workItem from="1639199972837" duration="5428000" />
       <workItem from="1639209706489" duration="4812000" />
       <workItem from="1639224937990" duration="315000" />
-      <workItem from="1639225382639" duration="2228000" />
-    </task>
-    <task id="LOCAL-00085" summary="case : update zone">
-      <created>1628762908983</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1628762908983</updated>
+      <workItem from="1639225382639" duration="2538000" />
     </task>
     <task id="LOCAL-00086" summary="case : update have to return promotion">
       <created>1628770581885</created>
@@ -664,7 +650,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639221201176</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="case : update  by first">
+      <created>1639227934765</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1639227934765</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -707,9 +700,9 @@
     <MESSAGE value="case : update db by first" />
     <MESSAGE value="case : update word borrow by first" />
     <MESSAGE value="case : update messge+award borrow by first" />
-    <MESSAGE value="case : update  by first" />
     <MESSAGE value="case : update surname zone by first" />
-    <option name="LAST_COMMIT_MESSAGE" value="case : update surname zone by first" />
+    <MESSAGE value="case : update  by first" />
+    <option name="LAST_COMMIT_MESSAGE" value="case : update  by first" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
