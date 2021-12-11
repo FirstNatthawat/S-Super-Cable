@@ -62,7 +62,8 @@ try {
                                                 $total['p'] = 0;
                                             }
                                             ?>
-                                            ยอดปัจจุบันเดือน <strong> <?=$this->m(date('m'))?> : <?=$total['p']?> </strong> บาท
+                                            <!-- ยอดปัจจุบันเดือน <strong> <?=$this->m(date('m'))?> : <?=$total['p']?> </strong> บาท -->
+                                            <strong> รวมยอดขายทั้งหมด <?php echo number_format($si['sum'],2);?> </strong>บาท
                                         </div>
                                     </div>
                                 </form>
@@ -85,27 +86,39 @@ try {
                                 $avg = '';
                                 $labels = [];
                                 $dataV = [];
-                                array_push($dataV,  $total['p']);
-                                array_push($labels,  $this->m(date('m')));
-
+                                // array_push($dataV,  $total['p']);
+                                // array_push($labels,  $this->m(date('m')));
+                               
                                 foreach($day as $val){
-                                    $ex = explode('-',$val);
+                                    $ex = explode('-',$val["date"]);
                                     $m = number_format($ex[1]);
                                     $avg = ($si['slope']*$m)+$si['intercept'];
 
-
-                                    $labels[] = $this->m( date('m',strtotime("+".($ex[1]+1)." month")));
+                                    $labels[] = $this->m( date('m',strtotime("+".($ex[1]+0)." month")));
+                                  
+                                    
                                     $dataV[] = str_replace(',','',number_format($avg,2));
                                 ?>
                                     <tr>
                                         <td style="text-align:center;">
 
-                                            <?php echo $this->m(date('m',strtotime("+".($ex[1]+1)." month")))." ".date('Y',strtotime("+".($ex[1])." month")) ?>
-
+                                            <!-- <?php echo $this->m(date('m',strtotime("+".($ex[1]+1)." month")))." ".date('Y',strtotime("+".($ex[1])." month")) ?> -->
+                                            <?php echo $this->m(date('m',strtotime("+".($ex[1]+0)." month")))." ".$ex[0] ?>
                                         </td>
 
                                         <td style="text-align:center;">
-                                            <?php echo number_format($avg,2); ?>
+                                            <?php echo number_format($avg,2);?>&nbsp;
+                                            <span style="color:red;">
+                                            <?php 
+                                            if($val['type'] == "last_month"){
+                                                echo "*(ทำนายย้อนหลัง)";
+                                            }else{
+                                               if($val["date"] != DATE("Y-m-d")){
+                                                   echo '*(ทำนายก่อนหน้า)';
+                                               }
+                                            };
+                                            ?>
+                                            </span>
                                         </td>
                                     </tr>
                                 <?php

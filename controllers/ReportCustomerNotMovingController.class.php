@@ -22,6 +22,7 @@ class ReportCustomerNotMovingController
                 break;
             case "customer_not_moving_print":
                 session_start();
+              
                 $this->customer_not_moving_print();
                 break;
             default:
@@ -55,6 +56,19 @@ class ReportCustomerNotMovingController
         }
 
         $company = Sales::customerNotMovingReport($date_start,$date_end);
+        foreach($company as $key => $value){
+           // echo $value->Date_Sales;exit();
+           if(!empty($value->Date_Sales)){
+                $today=date_create(DATE("Y-m-d"));
+                $datesale=date_create($value->Date_Sales);
+                $diff=date_diff($today,$datesale);
+                $value->date_diffs = $diff->days;
+           }else{
+                $value->date_diffs = "ไม่พบประวัติการซื้อขาย"; 
+           }
+         
+        }
+     
         //print_r($company);
         include Router::getSourcePath() . "views/admin/report_customer_not_moving.inc.php";
     }
@@ -63,9 +77,13 @@ class ReportCustomerNotMovingController
     private function customer_not_moving_print()
     {
         $employee = $_SESSION['employee'];
-        $date_start = $y.'-01-01';
-        $date_end = $y.'-12-31';
-        $y = date('Y');
+        // $date_start = $y.'-01-01';
+        // $date_end = $y.'-12-31';
+        // $y = date('Y');
+        // $date_start = $y.'-01-01';
+        // $date_end = $y.'-03-31';
+        
+    
        if(isset($_GET['type']) && $_GET['type']=='1'){
             //$date_start = date('Y-m-d');
             //$date_end = date('Y-m-d', strtotime('-90 day', strtotime( $date_start )));
@@ -82,9 +100,21 @@ class ReportCustomerNotMovingController
             $date_end= date('Y-m-d');
             $date_start = date('Y-m-d', strtotime('-365 day', strtotime( date('Y-m-d') )));
         }
-
+      
         $company = Sales::customerNotMovingReport($date_start,$date_end);
-        //print_r($company);
+        foreach($company as $key => $value){
+            // echo $value->Date_Sales;exit();
+            if(!empty($value->Date_Sales)){
+                 $today=date_create(DATE("Y-m-d"));
+                 $datesale=date_create($value->Date_Sales);
+                 $diff=date_diff($today,$datesale);
+                 $value->date_diffs = $diff->days;
+            }else{
+                 $value->date_diffs = "ไม่พบประวัติการซื้อขาย"; 
+            }
+          
+         }
+      
         include "report-customer-not-moving.php";
     }
 

@@ -306,7 +306,7 @@ class Award
     public static function update_award_status2($ID_Employee, $ID_Award)
     {
         $con = Db::getInstance();
-        $query = "SELECT * FROM award_status WHERE ID_Employee='".$ID_Employee."' AND ID_Award='".$ID_Award."'";
+        $query = "SELECT * FROM award_status WHERE ID_Employee='".$ID_Employee."' AND ID_Award='".$ID_Award."' ";
         $stmt = $con->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "Award");
         $stmt->execute();
@@ -314,9 +314,13 @@ class Award
         while ($prod = $stmt->fetch()) {
             $read[] = $prod;
         }
-        
+     
         if(count($read)=='0'){
-            $query = 'INSERT INTO award_status(ID_Employee,ID_Award,status) VALUES("'.$ID_Employee.'","'.$ID_Award.'","0")';
+            $query = 'INSERT INTO award_status(ID_Employee,ID_Award,status) VALUES("'.$ID_Employee.'","'.$ID_Award.'","1")';
+            $con->exec($query);
+        }else{
+            $query = 'UPDATE award_status set status="1" where ID_Employee="'.$ID_Employee.'" and ID_Award ="'.$ID_Award.'"';
+         
             $con->exec($query);
         }
        
@@ -332,19 +336,37 @@ class Award
         $stmt->execute();
         $msg = array();
         while ($prod = $stmt->fetch()) {
+            $prod->accessto_idmsg =  $prod->getID_Award();
             $msg[] = $prod;
         }
         $countMsg = count($msg);
-
-        $query = "SELECT * FROM award_status WHERE ID_Employee='".$ID_Employee."'";
+      
+        $query = "SELECT * FROM award_status WHERE ID_Employee='".$ID_Employee."'  and status = 1 ";
+      
         $stmt = $con->prepare($query);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, "Message");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "Award");
         $stmt->execute();
         $read = array();
         while ($prod = $stmt->fetch()) {
+          
             $read[] = $prod;
         }
-        return $countMsg-count($read);
+
+   
+        if(!empty($read)){
+            foreach($msg as $key => $value){
+                foreach($read as $read_key => $read_value){
+                      
+                    if($value->getID_Award() == $read_value->getID_Award()){
+                        unset($msg[$key]);
+                    }
+                }
+            }
+           $msg= array_values($msg);
+        }
+ 
+       
+        return array("countunread" => $countMsg-count($read)  , "msg_unread" => $msg);
     }
 
 }

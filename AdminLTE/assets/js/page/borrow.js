@@ -1,12 +1,35 @@
-var columns = [
-  {"width": "5%", "class": "text-left"},
-  {"width": "5%", "class": "text-center"},
-  {"width": "5%", "class": "text-center"},
-  {"width": "5%", "class": "text-center"},
-  {"width": "5%", "class": "text-right"},
-  {"width": "5%", "class": "text-center"},
-  {"width": "5%", "class": "text-center"},
-  {"width": "5%", "class": "text-center"},
+var columns = [{
+    "width": "5%",
+    "class": "text-left"
+  },
+  {
+    "width": "5%",
+    "class": "text-center"
+  },
+  {
+    "width": "5%",
+    "class": "text-center"
+  },
+  {
+    "width": "5%",
+    "class": "text-center"
+  },
+  {
+    "width": "5%",
+    "class": "text-right"
+  },
+  {
+    "width": "5%",
+    "class": "text-center"
+  },
+  {
+    "width": "5%",
+    "class": "text-center"
+  },
+  {
+    "width": "5%",
+    "class": "text-center"
+  },
 ]
 
 var dataTable_ = $('#tbl').DataTable({
@@ -23,14 +46,16 @@ var dataTable_ = $('#tbl').DataTable({
     "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
     "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
     "sSearch": "ค้นหา :",
-    "aaSorting" :[[0,'desc']],
+    "aaSorting": [
+      [0, 'desc']
+    ],
     "paginate": {
-      "sFirst":    "หน้าแรก",
+      "sFirst": "หน้าแรก",
       "sPrevious": "ก่อนหน้า",
-      "sNext":     "ถัดไป",
-      "sLast":     "หน้าสุดท้าย",
+      "sNext": "ถัดไป",
+      "sLast": "หน้าสุดท้าย",
       "oAria": {
-        "sSortAscending":  ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+        "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
         "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
       }
     }
@@ -58,10 +83,10 @@ var form_validte = $("#form_modal").validate({
     Amount_BorrowOrReturn: {
       required: true,
     },
-    Type_BorrowOrReturn:{
+    Type_BorrowOrReturn: {
       required: true,
     },
-    Have_To_Return:{
+    Have_To_Return: {
       required: true,
     }
   },
@@ -82,10 +107,10 @@ var form_validte = $("#form_modal").validate({
       error.insertAfter(element)
     }
   },
-  submitHandler: function(form) {
-    var dataId =  $('#button_modal').attr("data-id");
+  submitHandler: function (form) {
+    var dataId = $('#button_modal').attr("data-id");
     var dataStatus = $('#button_modal').attr("data-status");
-    if(dataStatus=="create"){
+    if (dataStatus == "create") {
       onaction_insert();
     }
   }
@@ -98,7 +123,7 @@ function modalShow(type, selectID = null) {
   switch (type) {
     case 'create':
       title = "ยืม/เบิกสินค้าส่งเสริมการขาย";
-      $('#button_modal').attr("data-id","");
+      $('#button_modal').attr("data-id", "");
       $('#Type_BorrowOrReturn').val('1');
 
       $('#devDetail_BorrowOrReturns').show();
@@ -156,7 +181,7 @@ function onaction_insert() {
 }
 
 
-function onaction_delete(id){
+function onaction_delete(id) {
   Swal.fire({
     title: 'คุณเเน่ใจใช่ไหม?',
     text: "คุณต้องการลบข้อมูลนี้ใช่ไหม?",
@@ -203,7 +228,7 @@ function onaction_delete(id){
   })
 }
 
-function onaction_edit(id){
+function onaction_edit(id) {
 
   $('#modelTitle').html("คืนสินค้า");
   /* set button event  */
@@ -228,3 +253,62 @@ function onaction_edit(id){
   });
 }
 
+
+
+function fetch_borrowdata() {
+  google.charts.load("current", {
+    packages: ['corechart']
+  });
+  google.charts.setOnLoadCallback(drawChart);
+
+}
+
+function drawChart() {
+
+
+  $.ajax({
+    type: "POST",
+    url: "index.php?controller=borrow&action=fetch_borrow",
+    processData: false,
+    contentType: false,
+    success: function (res, status, xhr) {
+      var response = JSON.parse(res);
+      var array_borrowrank = [];
+
+      var Header = ['Element', 'จำนวนครั้งที่ยืม'];
+      array_borrowrank.push(Header);
+      $.each(response.data, function (index, value) {
+
+        var temp = [];
+        temp.push(value.Name_Promotion);
+        temp.push(parseInt(value.count));
+
+        array_borrowrank.push(temp);
+      });
+      console.log(array_borrowrank);
+
+      var data = google.visualization.arrayToDataTable([array_borrowrank]);
+
+      var options = {
+        title: 'รายการของที่ยืมมากที่สุด'
+      };
+
+
+      var data = google.visualization.arrayToDataTable(array_borrowrank);
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.BarChart(document.getElementById('columnchart_values'));
+      chart.draw(data, options);
+
+    }
+  });
+
+
+
+}
+
+
+
+
+$(document).ready(function () {
+  fetch_borrowdata();
+});

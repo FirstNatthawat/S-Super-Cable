@@ -40,9 +40,17 @@ class TrendTwoController
             $type = $_GET['type'];
             $day = [];
             $day_start = date('Y-m-d');
-            for($i=0; $i<$type; $i++){
-                $day[] = date('Y-m-d', strtotime('+'.$i.' month', strtotime($day_start)));
+            // case : ย้อนหลัง x เดือน
+            for($j=$type; $j>0; $j--){
+                $day[] = array ( "date" => date('Y-m-d', strtotime('-'.$j.' month', strtotime($day_start))) , "type" => "last_month");  
             }
+            // case : ก่อนหน้า x เดือน
+            for($i=0; $i<=$type; $i++){
+                $day[] = array ( "date" =>  date('Y-m-d', strtotime('+'.$i.' month', strtotime($day_start))), "type" => "previous_month"); 
+            }
+          
+            
+          
             $current_year = date('Y');
             $current_month = number_format(date('m'));
             for($i=1; $i<=$current_month; $i++){
@@ -55,6 +63,7 @@ class TrendTwoController
                 $y[] = $total['p'];
                 $x[] = $i;
             }
+          
             
             $si = $this->linear_regression($x,$y);
         }
@@ -87,6 +96,7 @@ class TrendTwoController
         $x_sum = array_sum($x); // sum of all X values
         $y_sum = array_sum($y); // sum of all Y values
          
+     
         $xx_sum = 0;
         $xy_sum = 0;
          
@@ -101,10 +111,11 @@ class TrendTwoController
          
         // calculate intercept
         $intercept = ( $y_sum - ( $slope * $x_sum ) ) / $n;
-         
+    
         return array( 
             'slope'     => $slope,
             'intercept' => $intercept,
+            'sum' => $y_sum
         );
     }
 }

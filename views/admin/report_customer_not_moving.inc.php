@@ -78,7 +78,8 @@ try {
                                             <tr>
                                                 <td><?php echo ($key+1); ?></td>
                                                 <td><?php echo $val->getName_Company(); ?></td>
-                                                <td><?php echo $this->countDay($val->getID_Company()); ?></td>
+                                                <!-- <td><?php echo $this->countDay($val->getID_Company()); ?></td> -->
+                                                <td><?php echo $val->date_diffs; ?></td>
                                             </tr>
                                         <?php
                                             }
@@ -88,7 +89,12 @@ try {
                                     </table>
                                 </div>
                                 <div style="text-align:center; margin-top:20px;">
-                                    <a target="_blank" href="index.php?controller=reportcustomernotmoving&action=customer_not_moving_print&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลดรายงาน</a>
+                                    <!-- <a target="_blank" href="index.php?controller=reportcustomernotmoving&action=customer_not_moving_print&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลดรายงาน</a>
+                               
+                                -->
+                                <a target="_blank" href='index.php?controller=reportcustomernotmoving&action=customer_not_moving_print&type=<?php echo $_GET["type"] ?>'>ดาวน์โหลดรายงาน</a>
+                               
+                               
                                 </div>
                             </div>
                             <!-- /.card-body -->

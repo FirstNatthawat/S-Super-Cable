@@ -6,7 +6,7 @@ try {
         header("Location: " . Router::getSourcePath() . "index.php");
     }
     ob_start();
-    ?>
+?>
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -25,15 +25,24 @@ try {
     <div class=" content-wrapper">
 
         <!-- Content Header (Page header) -->
-        <div class="content-header" >
+        <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-12">
                     <div class="col-md-12">
-                        <h1 class="m-0">รางวัล </h1><?php echo "ข้อความที่ไม่ได้อ่าน <font color=red>".Award::message_unread($emp_id)."</font>"; ?>
+                        <?php
+                        $messages     = Award::message_unread($emp_id);
+                        $countunread  = $messages['countunread'];
+                        $messageunread = (array)$messages['msg_unread'];
+
+                        
+
+                        ?>
+
+                        <h1 class="m-0">รางวัล </h1><?php echo "ข้อความที่ไม่ได้อ่าน <font color=red>" . $countunread . "</font>"; ?>
                         <div class="card">
-                            <div class="card-body p-0" >
+                            <div class="card-body p-0">
                                 <!-- content -->
-                                <div class="callout callout-info" >
+                                <div class="callout callout-info">
                                     <?php $i = 1;
 
                                     foreach ($award as $key => $value) {
@@ -41,30 +50,40 @@ try {
                                         $date = date_create($value->getDate_Award());
                                         $img = '';
                                         $img_data =  Award_Image::get_images($value->getID_Award());
-                                        if(count($img_data)>0){
-                                            $img = Router::getSourcePath() . "images/".$img_data[0]->getImage_name();
+                                        if (count($img_data) > 0) {
+                                            $img = Router::getSourcePath() . "images/" . $img_data[0]->getImage_name();
                                         }
-                                        ?>
-                                        <table width="100%" style="margin-bottom:20px;" >
+                                       
+                                        $find_unreadkey = array_search($value->getID_Award(), array_column($messageunread, 'accessto_idmsg'));
+                                     
+                                    ?>
+                                        <table width="100%" style="margin-bottom:20px;">
                                             <tr valign="top">
                                                 <td width="30%">
                                                     <img src="<?php echo $img; ?>" width="100%">
                                                 </td>
                                                 <td width="70%" style="padding:5px;">
                                                     วันที่ : <?php echo date_format($date, 'd/m/Y'); ?>
-                                                    <br/>
+                                                    <br />
                                                     <a href="index.php?controller=Award&action=show&id=<?php echo $value->getID_Award(); ?>"><?php echo $value->getTittle_Award(); ?></a>
-                                                    <br/>
+                                                    <?php
+                                                    if (is_numeric($find_unreadkey)) {
+                                                    ?>
+                                                        <span style="color:red;font-size:24px;">*</span>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    <br />
                                                 </td>
                                             </tr>
                                         </table>
                                     <?php } ?>
                                     <ul class="pagination pagination-sm">
                                         <?php
-                                        for($i=1;$i<=$count_page;$i++){
-                                            ?>
+                                        for ($i = 1; $i <= $count_page; $i++) {
+                                        ?>
                                             <li class="page-item"><a href="index.php?controller=Award&action=show_award_status&page=<?php echo $i; ?>" class="page-link"><?php echo $i; ?></a></li>
-                                            <?php
+                                        <?php
                                         }
                                         ?>
                                     </ul>
@@ -89,19 +108,19 @@ try {
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a class="brand-link">
-            <img src="AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                 style="opacity: .8">
+            <img src="AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">S Super Cable</span>
         </a>
         <!-- Sidebar -->
         <?php
         $user_status = $_SESSION['employee']->getUser_Status_Employee();
-        if(strtolower($user_status)=='sales'){
+        if (strtolower($user_status) == 'sales') {
             include("templates/sales/sidebar_menu.inc.php");
-        }else if(strtolower($user_status)=='user'){
+        } else if (strtolower($user_status) == 'user') {
             include("templates/users/sidebar_menu.inc.php");
         }
-        ?>        <!-- /.sidebar -->
+        ?>
+        <!-- /.sidebar -->
     </aside>
 
     <?php
@@ -112,7 +131,7 @@ try {
     ?>
 
 
-    <?php
+<?php
     $content = ob_get_clean();
 
     include Router::getSourcePath() . "templates/layout.php";

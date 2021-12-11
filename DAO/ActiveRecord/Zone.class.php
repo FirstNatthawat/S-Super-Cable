@@ -43,6 +43,14 @@ class Zone
     {
         $this->$AMPHUR_ID = $AMPHUR_ID;
     }
+    public function getAMPHUR_NAME() : string
+    {
+        return $this->AMPHUR_NAME;
+    }
+    public function setAMPHUR_NAME(string $AMPHUR_NAME)
+    {
+        $this->AMPHUR_NAME = $AMPHUR_NAME;
+    }
     public function getPROVINCE_ID(): int
     {
         return $this->PROVINCE_ID;
@@ -52,6 +60,24 @@ class Zone
         $this->$PROVINCE_ID = $PROVINCE_ID;
     }
 
+    public function getPROVINCE_NAME() : string
+    {
+        return $this->PROVINCE_NAME;
+    }
+    public function setPROVINCE_NAME(string $PROVINCE_NAME)
+    {
+        $this->PROVINCE_NAME = $PROVINCE_NAME;
+    }
+
+    public function getName_Employee(): string
+    {
+        return $this->Name_Employee;
+    }
+
+    public function setName_Employee(string $Name_Employee)
+    {
+        $this->Name_Employee = $Name_Employee;
+    }
     //----------- CRUD
     public static function findAll(): array
     {
@@ -67,6 +93,7 @@ class Zone
         while ($prod = $stmt->fetch()) {
             $zoneList[$prod->getID_Zone()] = $prod;
         }
+      
         return $zoneList;
     }
 
@@ -135,5 +162,35 @@ class Zone
         } else {
             return array("status" => false);
         }
+    }
+
+
+    //----------- find zone 
+    public static function findzone_groupbyamphur(): array
+    {
+        
+        $con = Db::getInstance();
+        $query = "SELECT * FROM " . self::TABLE. " inner join Employee on " . self::TABLE.".ID_Employee = Employee.ID_Employee
+            inner join PROVINCE on ". self::TABLE.".PROVINCE_ID = PROVINCE.PROVINCE_ID
+            left join AMPHUR on ". self::TABLE.".AMPHUR_ID = AMPHUR.AMPHUR_ID WHERE AMPHUR.AMPHUR_ID > 0";
+       
+      
+        $stmt = $con->prepare($query);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "Zone");
+        $stmt->execute();
+        $zoneList = array();
+        while ($prod = $stmt->fetch()) {
+           
+            if(!isset($zoneList[$prod->getPROVINCE_ID()]['data'][$prod->getAMPHUR_ID()])){
+                $zoneList[$prod->getPROVINCE_ID()]['province_name'] = $prod->getPROVINCE_NAME();
+                $zoneList[$prod->getPROVINCE_ID()]['data'][$prod->getAMPHUR_ID()] = array();    
+                $zoneList[$prod->getPROVINCE_ID()]['data'][$prod->getAMPHUR_ID()]['amphur_name'] =     $prod->getAMPHUR_NAME();        
+            }
+            
+            $zoneList[$prod->getPROVINCE_ID()]['data'][$prod->getAMPHUR_ID()]['data'][] = $prod;
+          
+        }
+    
+        return $zoneList;
     }
 }

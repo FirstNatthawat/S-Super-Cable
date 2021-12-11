@@ -59,7 +59,8 @@ ob_start(); // Start get HTML code
     <div>
 
         <h1 class="header">รายงานลูกค้าที่ไม่เคลื่อนไหว</h1>
-        <h1 class="header">วันที่ <?php $date = date_create($date_start); echo date_format($date, 'd/m/Y'); ?> ถึง <?php $date = date_create($date_end); echo date_format($date, 'd/m/Y'); ?></h1>
+        <h1 class="header">วันที่ <?php $date = date_create($date_start); 
+        echo date_format($date, 'd/m/Y'); ?> ถึง <?php $date = date_create($date_end); echo date_format($date, 'd/m/Y'); ?></h1>
         <div>
             <table>
                 <tr>
@@ -76,7 +77,8 @@ ob_start(); // Start get HTML code
                         <tr>
                             <td><?php echo $no; ?></td>
                             <td><?php echo $val->getName_Company(); ?></td>
-                            <td><?php echo $this->countDay($val->getID_Company()); ?></td>
+                            <!-- <td><?php echo $this->countDay($val->getID_Company()); ?></td> -->
+                            <td><?php echo $val->date_diffs; ?></td>
                         </tr>
                         <?php
                     }

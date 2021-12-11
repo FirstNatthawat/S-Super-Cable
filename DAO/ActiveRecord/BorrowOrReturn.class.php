@@ -337,6 +337,35 @@ class BorrowOrReturn
     }
 
 
+    public static function fetch_borrowranking(): array
+    {
+        $con = Db::getInstance();
+       
+        $query = "  
+                    select * from (
+                        select borroworreturn.ID_Promotion,promotion.Name_Promotion,count(*) as count from borroworreturn
+                        inner join promotion on borroworreturn.ID_Promotion = promotion.ID_Promotion
+                        where Type_BorrowOrReturn = 1
+                        GROUP BY  ID_Promotion
+                        order by count(*) desc
+                    )r1
+                    limit 5
+                    
+        ";
+        
+        $stmt = $con->prepare($query);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "borroworreturn");
+        $stmt->execute();
+        $dataList = array();
+        while ($prod = $stmt->fetch()) {
+            $dataList[] = array("count" => $prod->count 
+            , "ID_Promotion" => $prod->ID_Promotion 
+            , "Name_Promotion" => $prod->Name_Promotion);
+          
+        }
+        return $dataList;
+    }
+
     
 
 }
