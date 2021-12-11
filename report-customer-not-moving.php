@@ -71,6 +71,7 @@ ob_start(); // Start get HTML code
                     <tbody>
                     <?php
                     $no = 0;
+                    
                     foreach($company as $key => $val){
                         $no++;
                         ?>

@@ -5,7 +5,7 @@ try {
         header("Location: " . Router::getSourcePath() . "index.php");
     }
     ob_start();
-    ?>
+?>
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -27,7 +27,7 @@ try {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-md-12">
-                        <h1 class="m-0">รายงานลูกค้าที่ไม่เคลื่อนไหว  </h1>
+                        <h1 class="m-0">รายงานลูกค้าที่ไม่เคลื่อนไหว </h1>
                         <!-- content -->
                         <div class="card">
                             <div class="card-body">
@@ -52,13 +52,13 @@ try {
                                             <label for="" class="col-sm-2 col-form-label" style="text-align:right;">ค้นหา</label>
                                             <div class="col-sm-3">
                                                 <select class="form-control" name="type">
-                                                    <option value="1" <?php if(isset($_GET['type']) and $_GET['type']=='1'){ ?> selected <?php } ?>>3 เดือน</option>
-                                                    <option value="2" <?php if(isset($_GET['type']) and $_GET['type']=='2'){ ?> selected <?php } ?>>6 เดือน</option>
-                                                    <option value="3" <?php if(isset($_GET['type']) and $_GET['type']=='3'){ ?> selected <?php } ?>>1 ปี</option>
+                                                    <option value="1" <?php if (isset($_GET['type']) and $_GET['type'] == '1') { ?> selected <?php } ?>>3 เดือน</option>
+                                                    <option value="2" <?php if (isset($_GET['type']) and $_GET['type'] == '2') { ?> selected <?php } ?>>6 เดือน</option>
+                                                    <option value="3" <?php if (isset($_GET['type']) and $_GET['type'] == '3') { ?> selected <?php } ?>>1 ปี</option>
                                                 </select>
                                             </div>
                                             <div class="col-sm-2">
-                                                 <button type="submit" class="btn btn-info">ค้นหา</button>
+                                                <button type="submit" class="btn btn-info">ค้นหา</button>
                                             </div>
                                         </div>
                                     </form>
@@ -71,20 +71,22 @@ try {
                                             <th>จำนวนวัน</th>
                                         </thead>
                                         <tbody>
-                                        <?php
-                                        if(count($company)>0){
-                                            foreach($company as $key => $val){
-                                        ?>
-                                            <tr>
-                                                <td><?php echo ($key+1); ?></td>
-                                                <td><?php echo $val->getName_Company(); ?></td>
-                                                <!-- <td><?php echo $this->countDay($val->getID_Company()); ?></td> -->
-                                                <td><?php echo $val->date_diffs; ?></td>
-                                            </tr>
-                                        <?php
+                                            <?php
+                                            if (count($company) > 0) {
+                                                if (isset($_GET['type'])) {
+                                                    foreach ($company as $key => $val) {
+                                            ?>
+                                                        <tr>
+                                                            <td><?php echo ($key + 1); ?></td>
+                                                            <td><?php echo $val->getName_Company(); ?></td>
+                                                            <!-- <td><?php echo $this->countDay($val->getID_Company()); ?></td> -->
+                                                            <td><?php echo $val->date_diffs; ?></td>
+                                                        </tr>
+                                            <?php
+                                                    }
+                                                }
                                             }
-                                        }
-                                        ?>
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -92,9 +94,12 @@ try {
                                     <!-- <a target="_blank" href="index.php?controller=reportcustomernotmoving&action=customer_not_moving_print&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลดรายงาน</a>
                                
                                 -->
-                                <a target="_blank" href='index.php?controller=ReportCustomerNotMoving&action=customer_not_moving_print&type=<?php echo $_GET["type"] ?>'>ดาวน์โหลดรายงาน</a>
-                               
-                               
+                                <?php if (isset($_GET['type'])) {?>
+                                    <a target="_blank" href='index.php?controller=ReportCustomerNotMoving&action=customer_not_moving_print&type=<?php echo $_GET["type"] ?>'>ดาวน์โหลดรายงาน</a>
+                                <?php } else{?>
+                                    <a href="#">ไม่พบข้อมูล</a>
+                                <?php }?>
+
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -114,18 +119,17 @@ try {
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a class="brand-link">
-            <img src="AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                 style="opacity: .8">
+            <img src="AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">S Super Cable</span>
         </a>
         <!-- Sidebar -->
         <?php
         $user_status = $_SESSION['employee']->getUser_Status_Employee();
-        if(strtolower($user_status)=='sales'){
+        if (strtolower($user_status) == 'sales') {
             include("templates/sales/sidebar_menu.inc.php");
-        }else if(strtolower($user_status)=='admin'){
+        } else if (strtolower($user_status) == 'admin') {
             include("templates/admin/sidebar_menu.inc.php");
-        }else if(strtolower($user_status)=='user'){
+        } else if (strtolower($user_status) == 'user') {
             include("templates/users/sidebar_menu.inc.php");
         }
         ?>
@@ -143,7 +147,7 @@ try {
 
 
     </div>
-    <?php
+<?php
     $content = ob_get_clean();
     // $user_jsonencode = json_encode($user);
     // echo '<PRE>';
@@ -154,6 +158,3 @@ try {
     exit(1);
 }
 ?>
-
-
-
