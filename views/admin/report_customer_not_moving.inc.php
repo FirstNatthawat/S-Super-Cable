@@ -33,7 +33,7 @@ try {
                             <div class="card-body">
                                 <div>
                                     <form class="form-horizontal" method='get' action='' enctype="multipart/form-data">
-                                        <input type="hidden" name="controller" value="reportcustomernotmoving">
+                                        <input type="hidden" name="controller" value="ReportCustomerNotMoving">
                                         <input type="hidden" name="action" value="customer_not_moving">
                                         <!--<div class="form-group row">
                                             <label for="" class="col-sm-2 col-form-label">วันที่เริ่ม</label>
@@ -92,7 +92,7 @@ try {
                                     <!-- <a target="_blank" href="index.php?controller=reportcustomernotmoving&action=customer_not_moving_print&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลดรายงาน</a>
                                
                                 -->
-                                <a target="_blank" href='index.php?controller=reportcustomernotmoving&action=customer_not_moving_print&type=<?php echo $_GET["type"] ?>'>ดาวน์โหลดรายงาน</a>
+                                <a target="_blank" href='index.php?controller=ReportCustomerNotMoving&action=customer_not_moving_print&type=<?php echo $_GET["type"] ?>'>ดาวน์โหลดรายงาน</a>
                                
                                
                                 </div>
