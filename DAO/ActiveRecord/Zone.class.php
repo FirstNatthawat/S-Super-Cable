@@ -29,7 +29,7 @@ class Zone
 
     public function getAMPHUR_ID(): int
     {
-        return $this->AMPHUR_ID;
+        return empty($this->AMPHUR_ID) ? 0 : $this->AMPHUR_ID;
     }
     public function setAMPHUR_ID(int $AMPHUR_ID)
     {
@@ -37,7 +37,7 @@ class Zone
     }
     public function getAMPHUR_NAME() : string
     {
-        return $this->AMPHUR_NAME;
+        return empty($this->AMPHUR_NAME) ? "" : $this->AMPHUR_NAME;
     }
     public function setAMPHUR_NAME(string $AMPHUR_NAME)
     {
@@ -162,17 +162,17 @@ class Zone
     {
         
         $con = Db::getInstance();
-        $query = "SELECT * FROM " . self::TABLE. " inner join employee on " . self::TABLE.".ID_Employee = employee.ID_Employee
+        $query = "SELECT employee.Name_Employee ,zone.PROVINCE_ID ,zone.AMPHUR_ID,province.PROVINCE_NAME,amphur.AMPHUR_NAME   FROM " . self::TABLE. " inner join employee on " . self::TABLE.".ID_Employee = employee.ID_Employee
             inner join province on ". self::TABLE.".PROVINCE_ID = province.PROVINCE_ID
-            left join amphur on ". self::TABLE.".AMPHUR_ID = amphur.AMPHUR_ID WHERE amphur.AMPHUR_ID > 0";
-       
+            left join amphur on ". self::TABLE.".AMPHUR_ID = amphur.AMPHUR_ID ";
       
+    //   echo $query;exit();
         $stmt = $con->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "Zone");
         $stmt->execute();
         $zoneList = array();
         while ($prod = $stmt->fetch()) {
-           
+            
             if(!isset($zoneList[$prod->getPROVINCE_ID()]['data'][$prod->getAMPHUR_ID()])){
                 $zoneList[$prod->getPROVINCE_ID()]['province_name'] = $prod->getPROVINCE_NAME();
                 $zoneList[$prod->getPROVINCE_ID()]['data'][$prod->getAMPHUR_ID()] = array();    
@@ -182,6 +182,7 @@ class Zone
             $zoneList[$prod->getPROVINCE_ID()]['data'][$prod->getAMPHUR_ID()]['data'][] = $prod;
           
         }
+        
     
         return $zoneList;
     }

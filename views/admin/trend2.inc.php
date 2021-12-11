@@ -97,9 +97,10 @@ try {
                                     $avg = ($si['slope']*$m)+$si['intercept'];
 
                                     $labels[] = $this->m( date('m',strtotime("+".($ex[1]+0)." month")));
-                                  
+                                 
                                     
                                     $dataV[] = str_replace(',','',number_format($avg,2));
+                                    
                                 ?>
                                     <tr>
                                         <td style="text-align:center;">
