@@ -314,7 +314,6 @@ class BorrowOrReturn
         $con = Db::getInstance();
         $query = "SELECT SUM(Amount_BorrowOrReturn) AS qty 
                     FROM " . self::TABLE . " ".$where." AND borroworreturn.Type_BorrowOrReturn=1 ";
-        //echo $query.'<br/>';            
         $stmt = $con->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "borroworreturn");
         $stmt->execute();
@@ -343,9 +342,9 @@ class BorrowOrReturn
        
         $query = "  
                     select * from (
-                        select borroworreturn.ID_Promotion,promotion.Name_Promotion,count(*) as count from borroworreturn
+                        select borroworreturn.ID_Promotion,promotion.Name_Promotion,borroworreturn.Approve_BorrowOrReturn,count(*) as count from borroworreturn
                         inner join promotion on borroworreturn.ID_Promotion = promotion.ID_Promotion
-                        where Type_BorrowOrReturn = 1
+                        where Type_BorrowOrReturn = 1 and Approve_BorrowOrReturn ='1'
                         GROUP BY  ID_Promotion
                         order by count(*) desc
                     )r1
