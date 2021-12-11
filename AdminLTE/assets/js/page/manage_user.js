@@ -262,7 +262,34 @@ $("#resetpassword").on('click', function (event) {
 
 
 // case: ตอนอัพโหลดไฟล์ excel validate ว่าใช่ไฟล์ excel ไหมถ้าไม่ใช่ขึ้นแจ้งเตือนว่า type ไม่ตรง
-$('#form_importexcel').validate({
+$('#form_importexcel #examfile').validate({
+  rules: {
+    file: {
+
+      extension: "png|jpeg|jpg|gif",
+
+    }
+  },
+  messages: {
+    file: "กรุณาอัพโหลดไฟล์รูป ที่นามสกุล .png, .jpeg, .jpg,.gif  เท่านั้น"
+  },
+
+  errorPlacement: function (error, element) {
+    //แจ้งเตือนผิด format
+    Swal.fire({
+      icon: 'error',
+      title: 'ขออภัย...',
+      text: "กรุณาอัพโหลดรูป ที่นามสกุล .png, .jpeg, .jpg, .gif เท่านั้น",
+      confirmButtonText: 'ตกลง',
+    }).then((result) => {
+      // break
+      location.reload();
+
+    });
+  }
+});
+// case: ตอนอัพโหลดไฟล์ excel validate ว่าใช่ไฟล์ excel ไหมถ้าไม่ใช่ขึ้นแจ้งเตือนว่า type ไม่ตรง
+$('#form_importexcel #file ').validate({
   rules: {
     file: {
 
@@ -273,6 +300,7 @@ $('#form_importexcel').validate({
   messages: {
     file: "กรุณาอัพโหลดไฟล์ Excel ที่นามสกุล .xlsx, .csv เท่านั้น"
   },
+
   errorPlacement: function (error, element) {
     //แจ้งเตือนผิด format
     Swal.fire({

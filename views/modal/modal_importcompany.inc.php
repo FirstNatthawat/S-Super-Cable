@@ -13,7 +13,7 @@
                     <p>ตัวอย่าง format การนำข้อมูลเข้าระบบ</p>
                     <img src="<?php echo Router::getSourcePath() . "images/" . $file_log['file_name'] ?>" width="100%">
                     <h6 class="pt-4">อัพโหลดไฟล์รูปภาพตัวอย่าง</h6>
-                    <input id="examfile" name="examfile" type="file" accept=".png, .jpg,.jpeg,.gif" style="">
+                    <input id="examfile" name="examfile" type="file" style="">
                     <h6 class="pt-4">อัพโหลดไฟล์ Excel</h6>
                     <input type="file" name="file" id="file" value=""
                            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel,.csv"/>
