@@ -63,7 +63,9 @@ try {
                                             }
                                             ?>
                                             <!-- ยอดปัจจุบันเดือน <strong> <?=$this->m(date('m'))?> : <?=$total['p']?> </strong> บาท -->
-                                            <strong> รวมยอดขายทั้งหมด <?php echo number_format($si['sum'],2);?> </strong>บาท
+                                            <?php if(isset($si['sum'])){ ?>
+                                                <strong> รวมยอดขายทั้งหมด <?php echo number_format($si['sum'],2);?> </strong>บาท
+                                            <?php }?>
                                         </div>
                                     </div>
                                 </form>
