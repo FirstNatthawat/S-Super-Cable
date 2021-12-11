@@ -202,17 +202,18 @@ function onaction_deletesales(ID_Excel) {
 }
 
 // case: ตอนอัพโหลดไฟล์ excel validate ว่าใช่ไฟล์ excel ไหมถ้าไม่ใช่ขึ้นแจ้งเตือนว่า type ไม่ตรง
-$('#form_importexcel').validate({
+$('#form_importexcel #file ').validate({
   rules: {
     file: {
 
-      extension: "xls|xlsx|csv",
+      extension: "xlsx|csv",
 
     }
   },
   messages: {
-    file: "กรุณาอัพโหลดไฟล์ Excel ที่นามสกุล .xls, .xlsx, .csv เท่านั้น"
+    file: "กรุณาอัพโหลดไฟล์ Excel ที่นามสกุล .xlsx, .csv เท่านั้น"
   },
+
   errorPlacement: function (error, element) {
     //แจ้งเตือนผิด format
     Swal.fire({
@@ -227,6 +228,7 @@ $('#form_importexcel').validate({
     });
   }
 });
+
 
 // eof
 function downloadExcel() {
