@@ -290,7 +290,7 @@ function drawChart() {
       var data = google.visualization.arrayToDataTable([array_borrowrank]);
 
       var options = {
-        title: 'รายการของที่ยืมมากที่สุด'
+        title: 'รายการของที่ยืมมากที่สุด (เมื่ออนุมัติเเล้ว)'
       };
 
 
