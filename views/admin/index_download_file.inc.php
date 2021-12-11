@@ -52,7 +52,7 @@ try {
                                         </thead>
                                         <tbody>
 
-                                        <?php $i=1; foreach ($file as $key => $value) { ?>
+                                        <?php $i=1; foreach ($fileList as $key => $value) { ?>
                                             <tr>
                                                 <td><?php echo $i++; ?></td>
                                                 <td><?php echo $value->getName_File() ; ?></td>

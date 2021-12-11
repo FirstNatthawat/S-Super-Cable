@@ -34,7 +34,7 @@ try {
                             <div class="card-body">
                                 <div>
                                     <form class="form-horizontal" method='get' action='' enctype="multipart/form-data">
-                                        <input type="hidden" name="controller" value="reportcustomer">
+                                        <input type="hidden" name="controller" value="ReportCustomer">
                                         <input type="hidden" name="action" value="customer2">
                                         <div class="form-group row">
                                             <label for="" class="col-sm-2 col-form-label">วันที่เริ่ม</label>
@@ -53,7 +53,7 @@ try {
                                 </div>
 
                                 <div style="text-align:center; margin-top:20px; display: none;">
-                                    <a target="_blank" href="index.php?controller=reportcustomer&action=customer_print2&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลดรายงาน</a>
+                                    <a target="_blank" href="index.php?controller=ReportCustomer&action=customer_print2&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลดรายงาน</a>
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -99,7 +99,7 @@ try {
                                         </tbody>
                                 </table>
                                 <div style="text-align:center; margin-top:20px;">
-                                    <a target="_blank" href="index.php?controller=reportcustomer&action=customer_print2&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลดรายงาน</a>
+                                    <a target="_blank" href="index.php?controller=ReportCustomer&action=customer_print2&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลดรายงาน</a>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +139,7 @@ try {
                                         </tbody>
                                 </table>
                                 <div style="text-align:center; margin-top:20px;">
-                                    <a target="_blank" href="index.php?controller=reportcustomer&action=customer_print2&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลดรายงาน</a>
+                                    <a target="_blank" href="index.php?controller=ReportCustomer&action=customer_print2&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลดรายงาน</a>
                                 </div>
                             </div>
                         </div>

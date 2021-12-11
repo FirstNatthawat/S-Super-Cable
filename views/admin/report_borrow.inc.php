@@ -34,7 +34,7 @@ try {
                             <div class="card-body">
                                 <div>
                                     <form class="form-horizontal" method='get' action='' enctype="multipart/form-data">
-                                        <input type="hidden" name="controller" value="report">
+                                        <input type="hidden" name="controller" value="Report">
                                         <input type="hidden" name="action" value="borrow">
                                         <div class="form-group row">
                                             <label for="" class="col-sm-2 col-form-label">วันที่เริ่ม</label>
@@ -53,8 +53,8 @@ try {
                                 </div>
                                 <canvas id="myChart" width="100%"></canvas>
                                 <div style="text-align:center; margin-top:20px;">
-                                    <a target="_blank" href="index.php?controller=report&action=borrow_print&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลดรายงาน</a> <br>
-                                     <a target="_blank" href="index.php?controller=report&action=borrow_excel&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลด Excel</a>
+                                    <a target="_blank" href="index.php?controller=Report&action=borrow_print&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลดรายงาน</a> <br>
+                                     <a target="_blank" href="index.php?controller=Report&action=borrow_excel&date_start=<?php echo $_GET['date_start']; ?>&date_end=<?php echo $_GET['date_end'] ?>">ดาวน์โหลด Excel</a>
                                 </div>
                             </div>
                             <!-- /.card-body -->

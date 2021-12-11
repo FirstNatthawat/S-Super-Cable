@@ -1,7 +1,7 @@
 $("#form_search").submit(function(){
    $.ajax({
         type: "POST",
-        url: "index.php?controller=salesstatistics&action=getReport2",
+        url: "index.php?controller=SalesStatistics&action=getReport2",
         data: $("#form_search").serialize(),
         success: function (res, status, xhr) {
           var monthArr = [];
@@ -50,7 +50,7 @@ $("#form_search").submit(function(){
           var dataMonth = new Array(3);
           $.each(data, function() {
               //dataMonth[dataIndex] = new Array(12);
-              $.each(this, function(a,b) {      
+              $.each(this, function(a,b) {
                 dataIndex++;
                 dataMonth[dataIndex] = new Array(12);
                 yearArr.push(b.year);

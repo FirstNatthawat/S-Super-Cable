@@ -187,7 +187,7 @@ class FileController
 
         # retrieve data
         $employeeList = Employee::findAll();
-        $file = File::findAll();
+        $fileList = File::findAll();
         include Router::getSourcePath() . "views/admin/manage_file.inc.php";
 
     }
@@ -198,7 +198,7 @@ class FileController
 
         # retrieve data
         $employeeList = Employee::findAll();
-        $file = File::findAll();
+        $fileList = File::findAll();
         $user_status = $_SESSION['employee']->getUser_Status_Employee();
         if(strtolower($user_status)=='sales'){
             include Router::getSourcePath() ."views/admin/index_download_file.inc.php";

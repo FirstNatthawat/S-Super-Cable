@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update  by first">
-      <change beforePath="$PROJECT_DIR$/controllers/ZoneController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/ZoneController.class.php" afterDir="false" />
+    <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update surname zone by first">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminLTE/assets/js/page/emp_statistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminLTE/assets/js/page/emp_statistics.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminLTE/assets/js/page/sales_statistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminLTE/assets/js/page/sales_statistics.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/FileController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/FileController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/report_borrow.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/report_borrow.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/report_customer2.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/report_customer2.inc.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -312,14 +317,9 @@
       <workItem from="1639138144131" duration="570000" />
       <workItem from="1639141738950" duration="701000" />
       <workItem from="1639199972837" duration="5428000" />
-      <workItem from="1639209706489" duration="4493000" />
-    </task>
-    <task id="LOCAL-00084" summary="case : update xls and input disable">
-      <created>1628758713577</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1628758713578</updated>
+      <workItem from="1639209706489" duration="4812000" />
+      <workItem from="1639224937990" duration="315000" />
+      <workItem from="1639225382639" duration="2228000" />
     </task>
     <task id="LOCAL-00085" summary="case : update zone">
       <created>1628762908983</created>
@@ -657,7 +657,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639220803993</updated>
     </task>
-    <option name="localTasksCounter" value="133" />
+    <task id="LOCAL-00133" summary="case : update surname zone by first">
+      <created>1639221201176</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1639221201176</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -677,7 +684,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="case : delete invoice" />
     <MESSAGE value="case : update sales" />
     <MESSAGE value="case : update date format" />
     <MESSAGE value="case : change dropzone" />
@@ -702,7 +708,8 @@
     <MESSAGE value="case : update word borrow by first" />
     <MESSAGE value="case : update messge+award borrow by first" />
     <MESSAGE value="case : update  by first" />
-    <option name="LAST_COMMIT_MESSAGE" value="case : update  by first" />
+    <MESSAGE value="case : update surname zone by first" />
+    <option name="LAST_COMMIT_MESSAGE" value="case : update surname zone by first" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

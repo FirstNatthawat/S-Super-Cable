@@ -1,7 +1,7 @@
 $("#form_search").submit(function(){
    $.ajax({
         type: "POST",
-        url: "index.php?controller=salesstatistics&action=getReport",
+        url: "index.php?controller=EmpStatistics&action=getReport",
         data: $("#form_search").serialize(),
         success: function (res, status, xhr) {
           var yearArr = [];
@@ -57,7 +57,7 @@ $("#form_search").submit(function(){
           for(var i=1;i<=12;i++){
             total_all = total_all+t[i];
           }
-          
+
           htmlTB += '<tr>';
           htmlTB += '<td>เปรียบเทียบ</td>';
           htmlTB += '<td>'+t[1]+'</td>';
@@ -75,7 +75,7 @@ $("#form_search").submit(function(){
           htmlTB += '<td>'+total_all+'</td>';
           htmlTB += '</tr>';
           htmlTB += '</table>';
-          
+
           $("#tb").html(htmlTB);
           addChart(yearArr,valArr);
         }
