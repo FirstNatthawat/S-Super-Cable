@@ -115,7 +115,8 @@ class TrendTwoController
         return array( 
             'slope'     => $slope,
             'intercept' => $intercept,
-            'sum' => $y_sum
+            'sum' => $y_sum,
+            "actual_sale" => $y
         );
     }
 }
