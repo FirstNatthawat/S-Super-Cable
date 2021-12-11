@@ -27,7 +27,7 @@ try {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-md-12">
-                        <h1 class="m-0">หน้ารายงานเปรียบเทียบยอดขายโดยเลือกจากบริษัทลูกค้า </h1>
+                        <h1 class="m-0">รายงานเปรียบเทียบยอดขายโดยเลือกจากบริษัทลูกค้า </h1>
                         <div class="card">
                             <div class="card-body">
                             <form id="form_search" method='post' action='' enctype="multipart/form-data" class="form-horizontal">
