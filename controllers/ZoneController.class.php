@@ -245,7 +245,7 @@ class ZoneController
                             foreach ($amphur_value['data'] as $employee_key => $employee_value) {
 
 
-                                $activesheet->setCellValueByColumnAndRow($column, $start_row, $employee_value->getName_Employee());
+                                $activesheet->setCellValueByColumnAndRow($column, $start_row, $employee_value->getName_Employee().' '.$employee_value->getSurname_Employee());
                                 $colIndexvalue = PHPExcel_Cell::stringFromColumnIndex($column); # case : get column string name
                                 $activesheet->getStyle($colIndexvalue . $start_row)->getNumberFormat()->setFormatCode('0.000');
 
