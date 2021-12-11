@@ -70,6 +70,10 @@ class Zone
     {
         $this->Name_Employee = $Name_Employee;
     }
+    public function getSurName_Employee(): string
+    {
+        return $this->SurName_Employee;
+    }
     //----------- CRUD
     public static function findAll(): array
     {
@@ -162,7 +166,7 @@ class Zone
     {
         
         $con = Db::getInstance();
-        $query = "SELECT employee.Name_Employee ,zone.PROVINCE_ID ,zone.AMPHUR_ID,province.PROVINCE_NAME,amphur.AMPHUR_NAME   FROM " . self::TABLE. " inner join employee on " . self::TABLE.".ID_Employee = employee.ID_Employee
+        $query = "SELECT employee.Name_Employee,employee.SurName_Employee ,zone.PROVINCE_ID ,zone.AMPHUR_ID,province.PROVINCE_NAME,amphur.AMPHUR_NAME   FROM " . self::TABLE. " inner join employee on " . self::TABLE.".ID_Employee = employee.ID_Employee
             inner join province on ". self::TABLE.".PROVINCE_ID = province.PROVINCE_ID
             left join amphur on ". self::TABLE.".AMPHUR_ID = amphur.AMPHUR_ID ";
       
