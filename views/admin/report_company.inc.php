@@ -27,7 +27,7 @@ try {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-md-12">
-                        <h1 class="m-0">บริษัทลูกค้า</h1>
+                        <h1 class="m-0">รายงานบริษัทลูกค้า</h1>
 
                         <!-- content -->
                         <div class="card">

@@ -6,15 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update  by first">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_company.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_company.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_goods.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_goods.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_sales.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_sales.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_user.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/CompanyController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/CompanyController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/modal/modal_importcompany.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/modal/modal_importcompany.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/modal/modal_importgoods.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/modal/modal_importgoods.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/modal/modal_importsales.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/modal/modal_importsales.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/modal/modal_importuser.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/modal/modal_importuser.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_upload_pic_award.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_upload_pic_news.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/download/inv.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/download/inv.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/download/report_customer.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/download/report_customer.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/manage_company_sale.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/manage_company_sale.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/report_company.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/report_company.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/report_customer.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/sales_customer_statistics.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/sales_customer_statistics.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/sales_statistics.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/sales_statistics.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/sales_statistics2.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/sales_statistics2.inc.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -321,14 +322,8 @@
       <workItem from="1639135376442" duration="393000" />
       <workItem from="1639138144131" duration="570000" />
       <workItem from="1639141738950" duration="701000" />
-      <workItem from="1639199972837" duration="1973000" />
-    </task>
-    <task id="LOCAL-00081" summary="case : update award">
-      <created>1628592252356</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1628592252356</updated>
+      <workItem from="1639199972837" duration="5428000" />
+      <workItem from="1639209706489" duration="1390000" />
     </task>
     <task id="LOCAL-00082" summary="case : update zone and resultsales">
       <created>1628676132770</created>
@@ -666,7 +661,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639138360366</updated>
     </task>
-    <option name="localTasksCounter" value="130" />
+    <task id="LOCAL-00130" summary="case : update  by first">
+      <created>1639201995474</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1639201995475</updated>
+    </task>
+    <option name="localTasksCounter" value="131" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
