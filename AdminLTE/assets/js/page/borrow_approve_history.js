@@ -113,7 +113,7 @@ function onaction_insert() {
 
   $.ajax({
     type: "POST",
-    url: "index.php?controller=borrow&action=borrow_insert",
+    url: "index.php?controller=Borrow&action=borrow_insert",
     data: $("#form_modal").serialize(),
     success: function (res, status, xhr) {
       if (res.status == true) {
@@ -154,7 +154,7 @@ function onaction_delete(id){
     if (result.isConfirmed) {
       $.ajax({
         type: "POST",
-        url: "index.php?controller=borrow&action=borrow_delete&id=" + id,
+        url: "index.php?controller=Borrow&action=borrow_delete&id=" + id,
         processData: false,
         contentType: false,
         success: function (res, status, xhr) {
@@ -202,7 +202,7 @@ function onaction_disApprove(id){
     if (result.isConfirmed) {
       $.ajax({
         type: "POST",
-        url: "index.php?controller=borrow&action=borrow_approve_dis&id=" + id,
+        url: "index.php?controller=Borrow&action=borrow_approve_dis&id=" + id,
         processData: false,
         contentType: false,
         success: function (res, status, xhr) {
@@ -246,7 +246,7 @@ function onaction_Approve(id){
     if (result.isConfirmed) {
       $.ajax({
         type: "POST",
-        url: "index.php?controller=borrow&action=borrow_approve_save&id=" + id,
+        url: "index.php?controller=Borrow&action=borrow_approve_save&id=" + id,
         processData: false,
         contentType: false,
         success: function (res, status, xhr) {

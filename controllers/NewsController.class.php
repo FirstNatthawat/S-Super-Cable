@@ -72,8 +72,10 @@ class NewsController
                     $start = ($get_page*$show_row)-$show_row;
                     $message = Message::fetchAllwithInnerLimit($employee->getID_Employee(),$start,$show_row);
                     //echo $n.':'.$count_page;
+                   
                     //exit;
                     $emp_id = $employee->getID_Employee();
+                    
                     include Router::getSourcePath() . "views/sales/index_news.inc.php";
                 } else if ($employee->getUser_Status_Employee() == "User") {
                     # retrieve data

@@ -1,3 +1,5 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <?php
 try {
     $title = "S Super Cable";
@@ -5,7 +7,7 @@ try {
         header("Location: " . Router::getSourcePath() . "index.php");
     }
     ob_start();
-    ?>
+?>
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -30,99 +32,106 @@ try {
                         <h1 class="m-0">รายการเบิก-ยืม/คืนสินค้าส่งเสริมการขาย</h1>
 
                         <!-- content -->
-                        <div class="card" >
+                        <div class="card">
 
                             <div class="form-group row mt-2 mb-2 mr-1">
                                 <div class="col-md-12 text-right">
-                                    <a href="#" onclick="modalShow('create')"
-                                       class="collapse-link text-right mt-2 mb-2 mr-2" style="color: #415468;">
-                                        <span class="btn btn-round btn-success"
-                                              style=" font-size: 13px; padding: 0 15px; margin-bottom: inherit;"><i
-                                                class="fa fa-plus"></i> เบิก-ยืมสินค้า </span>
+                                    <a href="#" onclick="modalShow('create')" class="collapse-link text-right mt-2 mb-2 mr-2" style="color: #415468;">
+                                        <span class="btn btn-round btn-success" style=" font-size: 13px; padding: 0 15px; margin-bottom: inherit;"><i class="fa fa-plus"></i> เบิก-ยืมสินค้า </span>
                                     </a>
                                 </div>
                             </div>
+                            <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+                            
                             <div class="card-body p-0 d-flex">
+
+
+
                                 <div class="table-responsive">
                                     <table id="tbl" class="table table-md" style="width:100%;">
                                         <thead>
-                                        <tr>
-                                            <th>วันที่ยืม</th>
-                                            <th>เบิก-คืน</th>
-                                            <th>ชื่อสินค้าที่เบิก-ยืม/คืน</th>
-                                            <th>รายละเอียด</th>
-                                            <th>จำนวน</th>
-                                            <th>สถานะ</th>
-                                            <th>หมายเหตุ</th>
-                                            <th>การกระทำ</th>
-                                        </tr>
+                                            <tr>
+                                                <th>วันที่ยืม</th>
+                                                <th>เบิก-คืน</th>
+                                                <th>ชื่อสินค้าที่เบิก-ยืม/คืน</th>
+                                                <th>รายละเอียด</th>
+                                                <th>จำนวน</th>
+                                                <th>สถานะ</th>
+                                                <th>หมายเหตุ</th>
+                                                <th>การกระทำ</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <?php
-                                            if(count($borrow)>0){
-                                                foreach($borrow as $key => $val){
+                                            <?php
+                                            if (count($borrow) > 0) {
+                                                foreach ($borrow as $key => $val) {
                                                     $status_approve_txt = "รออนุมัติ";
                                                     $status_approve = $val->getApprove_BorrowOrReturn();
-                                                    if($status_approve=='1'){
+                                                    if ($status_approve == '1') {
                                                         $status_approve_txt = "อนุมัติ";
-                                                    }else if($status_approve=='2'){
+                                                    } else if ($status_approve == '2') {
                                                         $status_approve_txt = "ไม่อนุมัติ";
                                                     }
 
                                                     $type = "ยืม";
                                                     $promotion = Promotion::findById($val->getID_Promotion());
+
                                                     $showBtn = 0;
-                                                    if($val->getType_BorrowOrReturn()=='1' && $promotion->getHave_To_Return()=='1' && $status_approve=='1'){
+                                                    if ($val->getType_BorrowOrReturn() == '1' && $promotion->getHave_To_Return() == '1' && $status_approve == '1') {
                                                         $showBtn = 1;
                                                     }
-                                                    if($val->getType_BorrowOrReturn()=='2'){
+                                                    if ($val->getType_BorrowOrReturn() == '2') {
                                                         $type = "คืน";
                                                     }
-                                        ?>
-                                            <tr>
-                                                <td><?php  $date = date_create($val->getDate_BorrowOrReturn()); echo date_format($date, 'd/m/Y');; ?></td>
-                                                <td><?php echo $type; ?></td>
-                                                <td><?php echo $val->getName_Promotion(); ?></td>
-                                                <td><?php echo $val->getDetail_BorrowOrReturn(); ?></td>
-                                                <td><?php echo $val->getAmount_BorrowOrReturn(); ?></td>
-                                                <td><?php echo $status_approve_txt; ?></td>
-                                                <td>
-                                                    <?php echo $val->getComment_BorrowOrReturn(); ?>
-                                                </td>
-                                                <td class=" last">
-                                                    
-                                                <?php if($showBtn=='1'){ ?>
-                                                    <a href="#"
-                                                       onclick="onaction_edit('<?php echo $val->getID_BorrowOrReturn(); ?>')">
-                                                        <button type="button" class="btn btn-round btn-info"
-                                                                style=" font-size: 13px; padding: 0 15px; margin-bottom: inherit;width:96px !important;">
-                                                            <i class="fas fa-exchange-alt"></i> คืน
-                                                        </button>
-                                                    </a>
-                                                <?php } ?>
-                                                <?php if($status_approve=='0'){ ?>
 
-                                                <?php } ?>
-                                                <?php if($status_approve=='0'){ ?>
-                                                    <a href="#"
-                                                       onclick="onaction_delete('<?php echo $val->getID_BorrowOrReturn(); ?>')">
-                                                        <button type="button" class="btn btn-round btn-danger"
-                                                                style=" font-size: 13px; padding: 0 15px; margin-bottom: inherit;width:96px !important;">
-                                                            <i class="fa fa-trash"></i> ลบ
-                                                        </button>
-                                                    </a>
-                                                <?php } ?>
-                                                </td>
-                                            </tr>
-                                        <?php
+                                                    if ($promotion->getHave_To_Return() == '0') {
+                                                        $type = "เบิก";
+                                                    }
+
+                                            ?>
+                                                    <tr>
+                                                        <td><?php $date = date_create($val->getDate_BorrowOrReturn());
+                                                            echo date_format($date, 'd/m/Y');; ?></td>
+                                                        <td><?php echo $type; ?></td>
+                                                        <td><?php echo $val->getName_Promotion(); ?></td>
+                                                        <td><?php echo $val->getDetail_BorrowOrReturn(); ?></td>
+                                                        <td><?php echo $val->getAmount_BorrowOrReturn(); ?></td>
+                                                        <td><?php echo $status_approve_txt; ?></td>
+                                                        <td>
+                                                            <?php echo $val->getComment_BorrowOrReturn(); ?>
+                                                        </td>
+                                                        <td class=" last">
+
+                                                            <?php if ($showBtn == '1') { ?>
+                                                                <a href="#" onclick="onaction_edit('<?php echo $val->getID_BorrowOrReturn(); ?>')">
+                                                                    <button type="button" class="btn btn-round btn-info" style=" font-size: 13px; padding: 0 15px; margin-bottom: inherit;width:96px !important;">
+                                                                        <i class="fas fa-exchange-alt"></i> คืน
+                                                                    </button>
+                                                                </a>
+                                                            <?php } ?>
+                                                            <?php if ($status_approve == '0') { ?>
+
+                                                            <?php } ?>
+                                                            <?php if ($status_approve == '0') { ?>
+                                                                <a href="#" onclick="onaction_delete('<?php echo $val->getID_BorrowOrReturn(); ?>')">
+                                                                    <button type="button" class="btn btn-round btn-danger" style=" font-size: 13px; padding: 0 15px; margin-bottom: inherit;width:96px !important;">
+                                                                        <i class="fa fa-trash"></i> ลบ
+                                                                    </button>
+                                                                </a>
+                                                            <?php } ?>
+                                                        </td>
+                                                    </tr>
+                                            <?php
                                                 }
                                             }
-                                        ?>
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                             <!-- /.card-body -->
+
+
                         </div>
                         <!-- /.card -->
                         <!-- eof -->
@@ -139,18 +148,17 @@ try {
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a class="brand-link">
-            <img src="AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                 style="opacity: .8">
+            <img src="AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">S Super Cable</span>
         </a>
         <!-- Sidebar -->
         <?php
         $user_status = $_SESSION['employee']->getUser_Status_Employee();
-        if(strtolower($user_status)=='sales'){
+        if (strtolower($user_status) == 'sales') {
             include("templates/sales/sidebar_menu.inc.php");
-        }else if(strtolower($user_status)=='admin'){
+        } else if (strtolower($user_status) == 'admin') {
             include("templates/admin/sidebar_menu.inc.php");
-        }else if(strtolower($user_status)=='user'){
+        } else if (strtolower($user_status) == 'user') {
             include("templates/users/sidebar_menu.inc.php");
         }
         ?>
@@ -167,7 +175,7 @@ try {
     ?>
 
 
-    <?php
+<?php
     $content = ob_get_clean();
     // $user_jsonencode = json_encode($user);
     // echo '<PRE>';

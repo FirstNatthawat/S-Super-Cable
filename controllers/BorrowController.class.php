@@ -51,6 +51,9 @@ class BorrowController
             case "borrow_update":
                 $this->borrow_update();
                 break;
+            case "fetch_borrow":
+                $this->fetch_borrow();
+                break;
             default:
                 break;
         }
@@ -195,6 +198,13 @@ class BorrowController
         header('Content-type: application/json');
         echo json_encode(["status" => true]);
        
+    }
+
+    private function fetch_borrow(){
+        $access_borrow = new BorrowOrReturn();
+        $fetch_borrowranking = $access_borrow->fetch_borrowranking();
+       
+        echo json_encode(["data" => $fetch_borrowranking]);
     }
 
 }

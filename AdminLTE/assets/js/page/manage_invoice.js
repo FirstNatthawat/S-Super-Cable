@@ -142,6 +142,9 @@ function addItem(){
   var id_goods = $("#id_goods").val();
   var qty = $("#qty").val();
   var p_discout_price = $("#p_discout_price").val();
+  if(p_discout_price <= 0){
+    p_discout_price = 0;
+  }
   if(qty===''){
     alert('ใส่จำนวน');
     return false;

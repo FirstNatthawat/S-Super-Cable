@@ -332,19 +332,35 @@ class Message
         $stmt->execute();
         $msg = array();
         while ($prod = $stmt->fetch()) {
+            $prod->accessto_idmsg =  $prod->getID_Message();
             $msg[] = $prod;
         }
         $countMsg = count($msg);
 
-        $query = "SELECT * FROM message_status WHERE ID_Employee='".$ID_Employee."'";
+        $query = "SELECT * FROM message_status WHERE ID_Employee='".$ID_Employee."' and status = 1";
+       
         $stmt = $con->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "Message");
         $stmt->execute();
         $read = array();
+        $unread = array();
         while ($prod = $stmt->fetch()) {
-            $read[] = $prod;
+             $read[] = $prod;
         }
-        return $countMsg-count($read);
+       
+        if(!empty($read)){
+            foreach($msg as $key => $value){
+                foreach($read as $read_key => $read_value){
+                    if($value->getID_Message() == $read_value->getID_Message()){
+                        unset($msg[$key]);
+                    }
+                }
+            }
+           $msg= array_values($msg);
+        }
+        
+     
+        return array("countunread" => $countMsg-count($read)  , "msg_unread" => $msg);
     }
 
 
@@ -361,7 +377,10 @@ class Message
         }
         
         if(count($read)=='0'){
-            $query = 'INSERT INTO message_status(ID_Employee,ID_Message,status) VALUES("'.$ID_Employee.'","'.$ID_message.'","0")';
+            $query = 'INSERT INTO message_status(ID_Employee,ID_Message,status) VALUES("'.$ID_Employee.'","'.$ID_message.'","1")';
+            $con->exec($query);
+        }else{
+            $query = 'UPDATE message_status set status="1" where ID_Employee="'.$ID_Employee.'" and ID_Message ="'.$ID_message.'"';
             $con->exec($query);
         }
        

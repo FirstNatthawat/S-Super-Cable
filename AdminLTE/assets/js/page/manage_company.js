@@ -173,6 +173,7 @@ function companymanageShow(type, ID_Company = null) {
   //clear ค่าเก่า
   $('#form_companymanage input').attr('readonly', false);
   $('#form_companymanage select').attr("disabled", false);
+
   $('#button_companymanageModal').show();
 
 
@@ -195,6 +196,10 @@ function companymanageShow(type, ID_Company = null) {
 
       $('#ID_Employee').val('');
 
+      
+      onaction_set_radiobuttonvalue( 0 );
+
+      event_onclick_isblacklistradio(  0 );
       break;
     case 'edit':
       title = "เเก้ไขบริษัทลูกค้า ";
@@ -268,11 +273,17 @@ function onaction_getinptval(ID_Company) {
         .val(response.data.Cluster_Shop_ID)
         .trigger('change');
       $('#Contact_Name_Company').val(response.data.Contact_Name_Company);
-      $('input:radio[name="IS_Blacklist"]').attr('checked',true);
+      //$('input:radio[name="IS_Blacklist"]').attr('checked',true);
       $('#Cause_Blacklist').val(response.data.Cause_Blacklist);
       $('#ID_Employee').val(response.data.ID_Employee);
       // set id
       $('#button_companymanageModal').attr("data-id", ID_Company);
+
+      // case : set radio button value
+      var IS_Blacklist_Status = response.data.IS_Blacklist == "ใช่" ?  1 : 0;
+      onaction_set_radiobuttonvalue( IS_Blacklist_Status );
+      // case : set event ของ radio button ( เลือกไม่ใช่ให้ไม่สามารถพิมพ์เหตุผลได้)
+      event_onclick_isblacklistradio( IS_Blacklist_Status );
     },
     error: function (xhr, status, exception) {
       //console.log(xhr);
@@ -280,7 +291,16 @@ function onaction_getinptval(ID_Company) {
   });
 }
 
-
+function onaction_set_radiobuttonvalue(IS_Blacklist_Status){
+  if(IS_Blacklist_Status == 1){
+    $("#IS_Blacklist_True").attr('checked',true);
+    $("#IS_Blacklist_False").attr('checked',false);
+  }else{
+    $("#IS_Blacklist_False").attr('checked',true);
+    $("#IS_Blacklist_True").attr('checked',false);
+  }
+  
+}
 function onaction_deletecompany(ID_Company) {
   Swal.fire({
     title: 'คุณเเน่ใจใช่ไหม?',
@@ -558,6 +578,8 @@ function importShow() {
 $(document).ready(function(){
 
 
+  
+
 });
 
 
@@ -567,6 +589,15 @@ $('#province').on('change', function () {
 
 });
 
+function event_onclick_isblacklistradio(radio_value){
+  // case : 1 = ใช่ , 0 = ไม่ใช่
+  if(radio_value == 1){
+    $('#Cause_Blacklist').attr('readonly', false);
+  }else{
+    $('#Cause_Blacklist').attr('readonly', true);
+  }
+
+}
 
 function getAmphur(provice_id) {
 

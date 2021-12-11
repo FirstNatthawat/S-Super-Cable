@@ -94,6 +94,32 @@ var form_validte = $("#form_zonemanage").validate({
 });
 
 
+function zonedownloadexcel(){
+  
+  var url_string = "index.php?controller=Zone&action=download_zone";
+  $.ajax({
+    type: "POST",
+    url: "index.php?controller=Zone&action=download_zone",
+    data: {
+      "page": 'download_zone'
+    },
+
+    dataType: 'json',
+
+    success: function (data, status, xhr) {
+
+      console.log(data);
+      var filename = data.filename;
+      //alert(data.filename);
+      //window.location.href = "./uploads/" + filename;
+
+
+    }
+  });
+
+}
+
+
 function zonemanageShow(type, ID_Zone = null) {
   var title = "";
 

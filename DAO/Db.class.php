@@ -5,7 +5,7 @@ class Db
     private static $instance = NULL;
     private static $dsn = "mysql:dbname=project;host=localhost";
     private static $user = "root";
-    private static $pass = "root";
+    private static $pass = "";
 
     private function __construct()
     {

@@ -255,6 +255,7 @@ class Sales
     {
         $con = Db::getInstance();
         $query = "SELECT SUM(Result_Sales) AS p FROM " . self::TABLE . " WHERE sales.Date_Sales BETWEEN '".$startDate."' AND '".$endDate."'";
+       
         $stmt = $con->prepare($query);
         //$stmt->setFetchMode(PDO::FETCH_CLASS, "Sales");
         $stmt->execute();
@@ -270,19 +271,34 @@ class Sales
         $con = Db::getInstance();
         #$where = "SELECT sales.ID_Company FROM sales WHERE sales.Date_Sales BETWEEN '".$startDate."'
         #           AND '".$endDate."'  ";
-        $where = "where sales.Date_Sales BETWEEN '".$startDate."' AND '".$endDate."'";
+      
         #$query = "SELECT * FROM company WHERE company.ID_Company NOT IN (".$where.") ";
-        $query = "SELECT * FROM `company` inner join sales on company.`ID_Company` = sales.ID_Company ".$where;
-        //$query = "SELECT *, DATEDIFF( CURRENT_DATE(),MAX(sales.Date_Sales)) AS SUM   FROM `company` inner join sales on company.`ID_Company` = sales.ID_Company where ID_Company ='{$ID_Company}'";
+        // $query = "SELECT * FROM `company` inner join sales on company.`ID_Company` = sales.ID_Company ".$where;
+        /* case : new query 2021-12-10              */
+        
+        $where = "where r1.Date_Sales  NOT BETWEEN '".$startDate."' AND '".$endDate."' OR r1.Date_Sales is null";
+        $query = " SELECT * FROM (
+            SELECT company.ID_Company,company.Name_Company,sales.Date_Sales FROM `company` left join sales on company.`ID_Company` = sales.ID_Company
+            GROUP BY company.ID_Company
+            ORDER BY sales.Date_Sales DESC
+        )r1
+        {$where}
+         ";
 
+        /* ======================================== */
+        //$query = "SELECT *, DATEDIFF( CURRENT_DATE(),MAX(sales.Date_Sales)) AS SUM   FROM `company` inner join sales on company.`ID_Company` = sales.ID_Company where ID_Company ='{$ID_Company}'";
+        //echo $query;exit();
         #die($query);
         $stmt = $con->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "Company");
         $stmt->execute();
         $rows = array();
+      
         while ($prod = $stmt->fetch()) {
+
             $rows[] = $prod;
         }
+      
         return $rows;
     }
     public static function customerReport($Cluster_Shop_ID,$startDate,$endDate)

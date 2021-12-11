@@ -61,7 +61,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="<?php echo Router::getSourcePath() . "index.php?controller=borrow&action=borrow"; ?>" class="nav-link">
+                        <a href="<?php echo Router::getSourcePath() . "index.php?controller=Borrow&action=borrow"; ?>" class="nav-link">
                             <i class="nav-icon fas fa-gifts"></i>
                             <p>
                                 ส่งเสริมการขาย
