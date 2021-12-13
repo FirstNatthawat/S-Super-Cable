@@ -255,7 +255,7 @@ class Sales
     {
         $con = Db::getInstance();
         $query = "SELECT SUM(Result_Sales) AS p FROM " . self::TABLE . " WHERE sales.Date_Sales BETWEEN '".$startDate."' AND '".$endDate."'";
-       
+      
         $stmt = $con->prepare($query);
         //$stmt->setFetchMode(PDO::FETCH_CLASS, "Sales");
         $stmt->execute();

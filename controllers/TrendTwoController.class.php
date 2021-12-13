@@ -1,5 +1,10 @@
 <?php
 
+
+
+# excel library
+include Router::getSourcePath() . 'classes/Excel.class.php';
+
 class TrendTwoController
 {
 
@@ -49,11 +54,13 @@ class TrendTwoController
                 $day[] = array ( "date" =>  date('Y-m-d', strtotime('+'.$i.' month', strtotime($day_start))), "type" => "previous_month"); 
             }
           
+           
             
           
             $current_year = date('Y');
             $current_month = number_format(date('m'));
-            for($i=1; $i<=$current_month; $i++){
+            # max two year
+            for($i=1; $i<=24; $i++){
                 $startDate = $current_year.'-'.str_pad($i,2,'0',STR_PAD_LEFT).'-01';
                 $endDate = $current_year.'-'.str_pad($i,2,'0',STR_PAD_LEFT).'-31';
                 $total = Sales::sumDate($startDate,$endDate);
@@ -62,8 +69,9 @@ class TrendTwoController
                 }
                 $y[] = $total['p'];
                 $x[] = $i;
+   
             }
-          
+           
             
             $si = $this->linear_regression($x,$y);
         }
@@ -90,33 +98,70 @@ class TrendTwoController
         return $month[$m];
     }
 
-    private function linear_regression( $x, $y ) {
-     
-        $n     = count($x);     // number of items in the array
-        $x_sum = array_sum($x); // sum of all X values
+    // use excel formula for calcurate
+    private function linear_regression($x , $y){
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+
         $y_sum = array_sum($y); // sum of all Y values
-         
-     
-        $xx_sum = 0;
-        $xy_sum = 0;
-         
-        for($i = 0; $i < $n; $i++) {
-            $xy_sum += ( $x[$i]*$y[$i] );
-            $xx_sum += ( $x[$i]*$x[$i] );
-           
+
+        $start_cell = 1;
+       
+        foreach($x as $month_key => $month_value){
+            
+            $value = empty($y[$month_key]) ? "" : $y[$month_key];
+            $objPHPExcel->getActiveSheet()->setCellValue("A{$start_cell}", $month_value);
+            $objPHPExcel->getActiveSheet()->setCellValue("B{$start_cell}", $value); 
+            ++ $start_cell;
         }
-         
-            // Slope
-        $slope = ( ( $n * $xy_sum ) - ( $x_sum * $y_sum ) ) / ( ( $n * $xx_sum ) - ( $x_sum * $x_sum ) );
-         
-        // calculate intercept
-        $intercept = ( $y_sum - ( $slope * $x_sum ) ) / $n;
+
+   
+        $objPHPExcel->getActiveSheet()->setCellValue('G3', "=SLOPE(B1:B{$start_cell}, A1:A{$start_cell})");
+        $objPHPExcel->getActiveSheet()->setCellValue('H3', "=INTERCEPT(B1:B{$start_cell},A1:A{$start_cell})");
+
+       
+
+        $slope      = $objPHPExcel->getActiveSheet()->getCell('G3')->getCalculatedValue();
+        $intercept  = $objPHPExcel->getActiveSheet()->getCell('H3')->getCalculatedValue();
     
+      
         return array( 
-            'slope'     => $slope,
-            'intercept' => $intercept,
+            'slope'     => floatval($slope),
+            'intercept' => floatval($intercept),
             'sum' => $y_sum,
             "actual_sale" => $y
         );
     }
 }
+
+
+
+   // private function linear_regression( $x, $y ) {
+     
+    //     $n     = count($x);     // number of items in the array
+    //     $x_sum = array_sum($x); // sum of all X values
+    //     $y_sum = array_sum($y); // sum of all Y values
+         
+     
+    //     $xx_sum = 0;
+    //     $xy_sum = 0;
+         
+    //     for($i = 0; $i < $n; $i++) {
+    //         $xy_sum += ( $x[$i]*$y[$i] );
+    //         $xx_sum += ( $x[$i]*$x[$i] );
+           
+    //     }
+         
+    //         // Slope
+    //     $slope = ( ( $n * $xy_sum ) - ( $x_sum * $y_sum ) ) / ( ( $n * $xx_sum ) - ( $x_sum * $x_sum ) );
+     
+    //     // calculate intercept
+    //     $intercept = ( $y_sum - ( $slope * $x_sum ) ) / $n;
+    
+    //     return array( 
+    //         'slope'     => $slope,
+    //         'intercept' => $intercept,
+    //         'sum' => $y_sum,
+    //         "actual_sale" => $y
+    //     );
+    // }

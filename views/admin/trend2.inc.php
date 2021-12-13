@@ -96,6 +96,12 @@ try {
                                         foreach ($day as $val) {
                                             $ex = explode('-', $val["date"]);
                                             $m = number_format($ex[1]);
+                                            // case : ก่อนหน้าให้ + ไป 12
+                                          
+                                            if($val['type'] == "previous_month" && DATE("Y") != $ex[0]){
+                                                
+                                                $m += 12;
+                                            }
                                             $avg = ($si['slope'] * $m) + $si['intercept'];
 
                                             $labels[] = $this->m(date('m', strtotime("+" . ($ex[1] + 0) . " month")));
@@ -107,6 +113,8 @@ try {
                                             $actual_sale = $si["actual_sale"][$access_month];
 
                                             $dataActualSale[] = str_replace(',', '', number_format($actual_sale, 2));
+
+                                            
 
                                         ?>
                                             <tr>
