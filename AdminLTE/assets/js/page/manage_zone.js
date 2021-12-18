@@ -95,7 +95,7 @@ var form_validte = $("#form_zonemanage").validate({
 
 
 function zonedownloadexcel(){
-  
+
   var url_string = "index.php?controller=Zone&action=download_zone";
   $.ajax({
     type: "POST",

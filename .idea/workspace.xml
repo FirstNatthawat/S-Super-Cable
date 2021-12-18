@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update  by first" />
+    <list default="true" id="9e7f549b-8b6b-42f9-a37d-06ac137332e7" name="Default Changelist" comment="case : update  by first">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_sales.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_sales.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_zone.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminLTE/assets/js/page/manage_zone.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAO/ActiveRecord/Sales.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/DAO/ActiveRecord/Sales.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAO/Db.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/DAO/Db.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/SalesController.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/UserController.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/download/report_customer_notmoving.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/download/report_customer_notmoving.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sales/sidebar_menu.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sales/sidebar_menu.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/manage_zone.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/manage_zone.inc.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -313,13 +325,12 @@
       <workItem from="1639209706489" duration="4812000" />
       <workItem from="1639224937990" duration="315000" />
       <workItem from="1639225382639" duration="2538000" />
-    </task>
-    <task id="LOCAL-00086" summary="case : update have to return promotion">
-      <created>1628770581885</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1628770581886</updated>
+      <workItem from="1639227996763" duration="152000" />
+      <workItem from="1639230322196" duration="2700000" />
+      <workItem from="1639233148077" duration="204000" />
+      <workItem from="1639386713110" duration="737000" />
+      <workItem from="1639392468879" duration="632000" />
+      <workItem from="1639811234359" duration="2493000" />
     </task>
     <task id="LOCAL-00087" summary="case : update inovice">
       <created>1628777934886</created>
@@ -657,7 +668,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639227934765</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="case : update  by first">
+      <created>1639228010170</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1639228010170</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

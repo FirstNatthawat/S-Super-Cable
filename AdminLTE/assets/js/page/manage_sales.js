@@ -106,11 +106,13 @@ function salesmanageShow(type, ID_Excel = null) {
 
       $('#div_idsales').show();
 
+
+
       // set id
       $('#button_salesmanageModal').attr("data-id", null);
       break;
     case 'edit':
-      title = "เเก่ไขยอดขาย";
+      title = "เเก้ไขยอดขาย";
       //clear error if exists
       form_validte.resetForm();
 
@@ -129,9 +131,9 @@ function salesmanageShow(type, ID_Excel = null) {
           $('#ID_Excel').val(response.data.ID_Excel);
           $('#Date_Sales').val(response.data.Date_Sales);
           // $('#ID_Company').val(response.data.ID_Company);
-          // $("#ID_Employee").val(response.data.ID_Employee);
-          $('#ID_Company').val(response.data.ID_Company).trigger("change");
-          $("#ID_Employee").val(response.data.ID_Employee).trigger("change");
+
+          $('#ID_Company').val(response.data.ID_Company).select2({  language: "th",dropdownParent: $('#salesmanageModal'),  dropdownAutoWidth : true   , width: '100%'});
+           $("#ID_Employee").val(response.data.ID_Employee).select2({  language: "th",dropdownParent: $('#salesmanageModal'),  dropdownAutoWidth : true   , width: '100%'});
           $('#Result_Sales').val(response.data.Result_Sales);
 
           // set id
